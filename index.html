@@ -1,465 +1,1036 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Growing Up: Character Quest</title>
+  <title>Growing Up: Character Quest</title>
 
-    <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- =========================
-         NAVIGATION
-    ========================== -->
+<!-- =====================================================
+     TOP NAVIGATION
+===================================================== -->
 
-    <nav class="top-nav">
+<header class="topbar">
 
-        <button class="logo-button" onclick="showPage('home')">
-            🌱 Growing Up
-        </button>
+  <button class="logo" onclick="showSection('home')">
+    🌱 Growing Up
+  </button>
 
-        <div class="progress-container">
-            <span id="progress-text">Quest Start</span>
-            <div class="progress-bar">
-                <div id="progress-fill"></div>
-            </div>
+  <div class="quest-progress">
+
+    <span id="progressText">
+      Quest Start
+    </span>
+
+    <div class="progress-track">
+      <div id="progressFill"></div>
+    </div>
+
+  </div>
+
+  <button
+    class="sound-btn"
+    onclick="toggleSound()"
+    id="soundBtn">
+    🔊
+  </button>
+
+</header>
+
+
+<main>
+
+<!-- =====================================================
+     HOME
+===================================================== -->
+
+<section
+  id="home"
+  class="page active-page home-page">
+
+  <div class="hero-orbit">
+    🌱
+  </div>
+
+  <p class="eyebrow">
+    YEAR 5 ENGLISH QUEST
+  </p>
+
+  <h1>
+    Growing Up:
+    <span>Character Quest</span>
+  </h1>
+
+  <p class="tagline">
+    Create it. Discover it. Build it. Tell it!
+  </p>
+
+  <p class="hero-copy">
+    Create a character and discover their story through
+    Reading, Listening, Grammar, Writing and Speaking.
+  </p>
+
+  <button
+    class="primary-btn"
+    onclick="showSection('creator')">
+
+    🚀 Start Your Quest
+
+  </button>
+
+
+  <div class="quest-map">
+
+    <div>
+      <span>👤</span>
+      <b>Character</b>
+    </div>
+
+    <div>
+      <span>🔎</span>
+      <b>Reading</b>
+    </div>
+
+    <div>
+      <span>🎧</span>
+      <b>Listening</b>
+    </div>
+
+    <div>
+      <span>🧠</span>
+      <b>Grammar</b>
+    </div>
+
+    <div>
+      <span>✍️</span>
+      <b>Writing</b>
+    </div>
+
+    <div>
+      <span>🗣️</span>
+      <b>Speaking</b>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     CHARACTER CREATOR
+===================================================== -->
+
+<section
+  id="creator"
+  class="page creator-page">
+
+  <div class="section-heading">
+
+    <p class="eyebrow">
+      MISSION 1
+    </p>
+
+    <h2>
+      👗 Character Creator
+    </h2>
+
+    <p>
+      Welcome to the dressing room!
+      Create your character before beginning your quest.
+    </p>
+
+  </div>
+
+
+  <div class="creator-grid">
+
+
+    <!-- CHARACTER DISPLAY -->
+
+    <div class="dressing-room">
+
+      <div class="mirror-light l1"></div>
+      <div class="mirror-light l2"></div>
+      <div class="mirror-light l3"></div>
+      <div class="mirror-light l4"></div>
+
+
+      <div class="mirror">
+
+        <div
+          id="characterAvatar"
+          class="avatar">
+
+          🧑🏻‍🦱
+
         </div>
 
-        <button id="sound-button" onclick="toggleSound()">
-            🔊
+      </div>
+
+
+      <div class="room-floor"></div>
+
+    </div>
+
+
+
+    <!-- CREATOR OPTIONS -->
+
+    <div class="creator-panel">
+
+
+      <!-- HAIR -->
+
+      <div class="choice-block">
+
+        <h3>
+          💇 Choose Hair
+        </h3>
+
+        <div class="choices">
+
+          <button
+            onclick="choose('hair','Curly','🧑🏻‍🦱',this)">
+
+            🧑🏻‍🦱
+            <span>Curly</span>
+
+          </button>
+
+
+          <button
+            onclick="choose('hair','Long','👩🏻',this)">
+
+            👩🏻
+            <span>Long</span>
+
+          </button>
+
+
+          <button
+            onclick="choose('hair','Short','🧑🏻',this)">
+
+            🧑🏻
+            <span>Short</span>
+
+          </button>
+
+
+          <button
+            onclick="choose('hair','Brown curly','👩🏽‍🦱',this)">
+
+            👩🏽‍🦱
+            <span>Brown curly</span>
+
+          </button>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- CLOTHES -->
+
+      <div class="choice-block">
+
+        <h3>
+          👕 Choose Clothes
+        </h3>
+
+        <div class="choices">
+
+          <button
+            onclick="choose('clothes','T-shirt','👕',this)">
+
+            👕
+            <span>T-shirt</span>
+
+          </button>
+
+
+          <button
+            onclick="choose('clothes','Dress','👗',this)">
+
+            👗
+            <span>Dress</span>
+
+          </button>
+
+
+          <button
+            onclick="choose('clothes','Jacket','🧥',this)">
+
+            🧥
+            <span>Jacket</span>
+
+          </button>
+
+
+          <button
+            onclick="choose('clothes','Sports','🥋',this)">
+
+            🥋
+            <span>Sports</span>
+
+          </button>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- PERSONALITY -->
+
+      <div class="choice-block">
+
+        <h3>
+          😊 Choose Personality
+        </h3>
+
+        <div class="choices">
+
+          <button
+            onclick="choose('personality','Friendly','😊',this)">
+
+            😊
+            <span>Friendly</span>
+
+          </button>
+
+
+          <button
+            onclick="choose('personality','Funny','😂',this)">
+
+            😂
+            <span>Funny</span>
+
+          </button>
+
+
+          <button
+            onclick="choose('personality','Brave','🦸',this)">
+
+            🦸
+            <span>Brave</span>
+
+          </button>
+
+
+          <button
+            onclick="choose('personality','Clever','🤓',this)">
+
+            🤓
+            <span>Clever</span>
+
+          </button>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- ACTIVITY -->
+
+      <div class="choice-block">
+
+        <h3>
+          ⚽ Favourite Activity
+        </h3>
+
+        <div class="choices">
+
+          <button
+            onclick="choose('activity','Football','⚽',this)">
+
+            ⚽
+            <span>Football</span>
+
+          </button>
+
+
+          <button
+            onclick="choose('activity','Badminton','🏸',this)">
+
+            🏸
+            <span>Badminton</span>
+
+          </button>
+
+
+          <button
+            onclick="choose('activity','Drawing','🎨',this)">
+
+            🎨
+            <span>Drawing</span>
+
+          </button>
+
+
+          <button
+            onclick="choose('activity','Reading','📚',this)">
+
+            📚
+            <span>Reading</span>
+
+          </button>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- CHARACTER CARD -->
+
+      <div class="character-card">
+
+        <h3>
+          ⭐ My Character
+        </h3>
+
+        <p>
+          Hair:
+          <b id="hairText">
+            Not selected
+          </b>
+        </p>
+
+        <p>
+          Clothes:
+          <b id="clothesText">
+            Not selected
+          </b>
+        </p>
+
+        <p>
+          Personality:
+          <b id="personalityText">
+            Not selected
+          </b>
+        </p>
+
+        <p>
+          Favourite activity:
+          <b id="activityText">
+            Not selected
+          </b>
+        </p>
+
+      </div>
+
+
+      <button
+        class="primary-btn full"
+        onclick="saveCharacter()">
+
+        ✨ Character Ready!
+
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     READING — KEYWORD DETECTIVE
+===================================================== -->
+
+<section
+  id="reading"
+  class="page reading-page">
+
+
+  <!-- HEADER -->
+
+  <div class="detective-header">
+
+    <div>
+
+      <p class="eyebrow">
+        MISSION 2
+      </p>
+
+      <h2>
+        🔎 Keyword Detective
+      </h2>
+
+      <p>
+        Follow the clues in order.
+        Complete every step to solve the case.
+      </p>
+
+    </div>
+
+
+    <div class="case-badge">
+
+      CASE
+
+      <strong>
+        001
+      </strong>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="detective-layout">
+
+
+    <!-- =================================================
+         DETECTIVE BOARD
+    ================================================= -->
+
+    <aside class="case-board">
+
+      <div class="case-title">
+        🕵️ DETECTIVE FILE
+      </div>
+
+
+      <!-- STEP 1 -->
+
+      <div
+        class="step active"
+        id="stepCircle">
+
+        <span>1</span>
+
+        <div>
+
+          <b>
+            CIRCLE
+          </b>
+
+          <small>
+            Question word
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <!-- STEP 2 -->
+
+      <div
+        class="step locked"
+        id="stepUnderline">
+
+        <span>2</span>
+
+        <div>
+
+          <b>
+            UNDERLINE
+          </b>
+
+          <small>
+            Key words
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <!-- STEP 3 -->
+
+      <div
+        class="step locked"
+        id="stepHunt">
+
+        <span>3</span>
+
+        <div>
+
+          <b>
+            HUNT
+          </b>
+
+          <small>
+            Find the clue
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <!-- STEP 4 -->
+
+      <div
+        class="step locked"
+        id="stepMatch">
+
+        <span>4</span>
+
+        <div>
+
+          <b>
+            MATCH
+          </b>
+
+          <small>
+            Find the object
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <div class="detective-tip">
+
+        💡
+
+        <b>
+          Detective tip:
+        </b>
+
+        <br>
+
+        Don't guess.
+        Use the words in the question
+        to guide you to the clue.
+
+      </div>
+
+    </aside>
+
+
+
+    <!-- =================================================
+         MAIN DETECTIVE AREA
+    ================================================= -->
+
+    <div class="mission-main">
+
+
+      <!-- QUESTION -->
+
+      <div class="question-card">
+
+        <span class="label">
+          CASE QUESTION
+        </span>
+
+
+        <h3 id="questionText">
+
+          <button
+            class="question-word"
+            onclick="circleWord(this)">
+
+            What
+
+          </button>
+
+          did
+
+          <button
+            class="question-word other"
+            onclick="wrongCircle(this)">
+
+            Adam
+
+          </button>
+
+          <button
+            class="question-word other"
+            onclick="wrongCircle(this)">
+
+            like
+
+          </button>?
+
+        </h3>
+
+
+        <p id="questionHint">
+
+          Step 1:
+          Circle the question word.
+
+        </p>
+
+      </div>
+
+
+
+      <!-- READING PASSAGE -->
+
+      <div class="passage-card">
+
+        <div class="passage-title">
+
+          📄 ADAM'S CASE FILE
+
+        </div>
+
+
+        <p class="reading-text">
+
+          When Adam was seven,
+          he had short black hair.
+          He played football with his friends.
+          He liked drawing,
+          but he didn't like swimming.
+
+        </p>
+
+
+        <!-- HUNT OPTIONS -->
+
+        <div
+          class="hunt-area"
+          id="huntArea">
+
+
+          <button
+            class="clue-word locked-clue"
+            onclick="huntWrong(this)">
+
+            short black hair
+
+          </button>
+
+
+          <button
+            class="clue-word locked-clue"
+            onclick="huntWrong(this)">
+
+            played football
+
+          </button>
+
+
+          <button
+            class="clue-word correct-clue"
+            onclick="huntClue(this)">
+
+            liked drawing
+
+          </button>
+
+
+          <button
+            class="clue-word locked-clue"
+            onclick="huntWrong(this)">
+
+            didn't like swimming
+
+          </button>
+
+
+        </div>
+
+      </div>
+
+
+
+      <!-- FEEDBACK -->
+
+      <div
+        class="feedback"
+        id="feedback">
+
+        <span>
+          🔎
+        </span>
+
+        <div>
+
+          <b>
+            Detective mission
+          </b>
+
+          <p>
+            Start with the question word.
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =================================================
+           MATCH — HIDDEN OBJECT
+      ================================================= -->
+
+      <div
+        class="match-card hidden"
+        id="matchCard">
+
+
+        <div class="match-intro">
+
+          <span class="label">
+            FINAL CLUE
+          </span>
+
+          <h3>
+            🕵️ Find the picture that matches the clue!
+          </h3>
+
+          <p>
+            Your clue is:
+            <strong>
+              liked drawing
+            </strong>
+          </p>
+
+        </div>
+
+
+
+        <!-- HIDDEN OBJECT SCENE -->
+
+        <div class="hidden-scene">
+
+
+          <div class="scene-window">
+
+            ☁️
+
+            <br>
+
+            🌳
+
+          </div>
+
+
+          <div class="scene-shelf">
+
+            📚
+            🪴
+            ⭐
+
+          </div>
+
+
+          <div class="scene-table">
+
+            🖍️
+            &nbsp;
+
+            📓
+            &nbsp;
+
+
+            <button
+              class="hidden-object drawing"
+              onclick="matchObject('drawing')">
+
+              🎨
+
+            </button>
+
+          </div>
+
+
+          <div class="scene-ball">
+            ⚽
+          </div>
+
+
+          <div class="scene-book">
+            📖
+          </div>
+
+
+          <div class="scene-rug">
+
+            ◼︎ ◼︎ ◼︎
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =================================================
+           COMPLETION
+      ================================================= -->
+
+      <div
+        class="mission-complete hidden"
+        id="missionComplete">
+
+        <div class="big-star">
+          ⭐
+        </div>
+
+        <h3>
+          Case Solved!
+        </h3>
+
+        <p>
+          Adam liked drawing.
+        </p>
+
+        <button
+          class="primary-btn"
+          onclick="showSection('home')">
+
+          🏆 Return to Quest Map
+
         </button>
 
-    </nav>
+      </div>
 
+    </div>
 
-    <!-- =========================
-         HOME
-    ========================== -->
+  </div>
 
-    <main>
+</section>
 
-        <section id="home" class="page active-page">
 
-            <div class="home-content">
 
-                <div class="home-character">
-                    👧
-                </div>
+<!-- =====================================================
+     FUTURE MISSIONS
+===================================================== -->
 
-                <p class="eyebrow">
-                    🌱 YEAR 5 ENGLISH QUEST
-                </p>
+<section
+  id="listening"
+  class="page placeholder-page">
 
-                <h1>
-                    Growing Up:
-                    <span>Character Quest</span>
-                </h1>
+  <div class="placeholder-icon">
+    🎧
+  </div>
 
-                <p class="home-subtitle">
-                    Create it. Discover it. Build it. Tell it!
-                </p>
+  <p class="eyebrow">
+    MISSION 3
+  </p>
 
-                <p class="home-description">
-                    Explore a character's story while practising
-                    Reading, Listening, Writing and Speaking.
-                </p>
+  <h2>
+    Catch the Clues
+  </h2>
 
-                <button class="main-button" onclick="showPage('creator')">
-                    🚀 Start Your Quest
-                </button>
+  <p>
+    Listen carefully and catch the correct information.
+  </p>
 
-                <div class="quest-preview">
+  <span>
+    🔒 Coming next
+  </span>
 
-                    <div>👤<small>Character</small></div>
-                    <div>📖<small>Reading</small></div>
-                    <div>🎧<small>Listening</small></div>
-                    <div>🧠<small>Grammar</small></div>
-                    <div>✍️<small>Writing</small></div>
-                    <div>🗣️<small>Speaking</small></div>
+</section>
 
-                </div>
 
-            </div>
 
-        </section>
+<section
+  id="grammar"
+  class="page placeholder-page">
 
+  <div class="placeholder-icon">
+    🧠
+  </div>
 
-        <!-- =========================
-             CHARACTER CREATOR
-        ========================== -->
+  <p class="eyebrow">
+    MISSION 4
+  </p>
 
-        <section id="creator" class="page">
+  <h2>
+    Grammar Time Machine
+  </h2>
 
-            <div class="room-header">
+  <p>
+    Past Simple:
+    Affirmative & Negative
+  </p>
 
-                <p class="eyebrow">
-                    MISSION 1
-                </p>
+  <span>
+    🔒 Coming next
+  </span>
 
-                <h2>👗 Character Creator</h2>
+</section>
 
-                <p>
-                    Welcome to the dressing room!
-                    Create your character before beginning your quest.
-                </p>
 
-            </div>
 
+<section
+  id="writing"
+  class="page placeholder-page">
 
-            <div class="dressing-room">
+  <div class="placeholder-icon">
+    ☁️
+  </div>
 
-                <!-- Character -->
+  <p class="eyebrow">
+    MISSION 5
+  </p>
 
-                <div class="mirror-area">
+  <h2>
+    Catch the Words
+  </h2>
 
-                    <div class="mirror">
+  <p>
+    Catch the correct words
+    and build your sentences.
+  </p>
 
-                        <div id="character" class="character">
+  <span>
+    🔒 Coming next
+  </span>
 
-                            <div id="character-hair" class="char-hair">
-                                🧑🏻‍🦱
-                            </div>
+</section>
 
-                            <div id="character-face" class="char-face">
-                                🙂
-                            </div>
 
-                            <div id="character-clothes" class="char-clothes">
-                                👕
-                            </div>
 
-                        </div>
+<section
+  id="speaking"
+  class="page placeholder-page">
 
-                    </div>
+  <div class="placeholder-icon">
+    🎲
+  </div>
 
-                    <p class="mirror-label">
-                        ✨ Your Character
-                    </p>
+  <p class="eyebrow">
+    MISSION 6
+  </p>
 
-                </div>
+  <h2>
+    Random Prompt
+  </h2>
 
+  <p>
+    Ask. Answer. Swap roles.
+  </p>
 
-                <!-- Wardrobe -->
+  <span>
+    🔒 Coming next
+  </span>
 
-                <div class="wardrobe">
+</section>
 
-                    <div class="choice-section">
 
-                        <h3>💇 Choose Hair</h3>
+</main>
 
-                        <div class="choice-grid">
 
-                            <button
-                                onclick="chooseHair('🧑🏻‍🦱', 'Curly hair')">
-                                🧑🏻‍🦱
-                                <span>Curly</span>
-                            </button>
-
-                            <button
-                                onclick="chooseHair('👩🏻', 'Long hair')">
-                                👩🏻
-                                <span>Long</span>
-                            </button>
-
-                            <button
-                                onclick="chooseHair('🧑🏻', 'Short hair')">
-                                🧑🏻
-                                <span>Short</span>
-                            </button>
-
-                            <button
-                                onclick="chooseHair('👩🏽‍🦱', 'Brown curly hair')">
-                                👩🏽‍🦱
-                                <span>Brown curly</span>
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="choice-section">
-
-                        <h3>👕 Choose Clothes</h3>
-
-                        <div class="choice-grid">
-
-                            <button
-                                onclick="chooseClothes('👕', 'T-shirt')">
-                                👕
-                                <span>T-shirt</span>
-                            </button>
-
-                            <button
-                                onclick="chooseClothes('👗', 'Dress')">
-                                👗
-                                <span>Dress</span>
-                            </button>
-
-                            <button
-                                onclick="chooseClothes('🧥', 'Jacket')">
-                                🧥
-                                <span>Jacket</span>
-                            </button>
-
-                            <button
-                                onclick="chooseClothes('🥋', 'Sports clothes')">
-                                🥋
-                                <span>Sports</span>
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="choice-section">
-
-                        <h3>😊 Choose Personality</h3>
-
-                        <div class="choice-grid">
-
-                            <button
-                                onclick="choosePersonality('Friendly')">
-                                😊
-                                <span>Friendly</span>
-                            </button>
-
-                            <button
-                                onclick="choosePersonality('Funny')">
-                                😂
-                                <span>Funny</span>
-                            </button>
-
-                            <button
-                                onclick="choosePersonality('Brave')">
-                                🦸
-                                <span>Brave</span>
-                            </button>
-
-                            <button
-                                onclick="choosePersonality('Clever')">
-                                🤓
-                                <span>Clever</span>
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="choice-section">
-
-                        <h3>⚽ Favourite Activity</h3>
-
-                        <div class="choice-grid">
-
-                            <button
-                                onclick="chooseActivity('Football')">
-                                ⚽
-                                <span>Football</span>
-                            </button>
-
-                            <button
-                                onclick="chooseActivity('Badminton')">
-                                🏸
-                                <span>Badminton</span>
-                            </button>
-
-                            <button
-                                onclick="chooseActivity('Drawing')">
-                                🎨
-                                <span>Drawing</span>
-                            </button>
-
-                            <button
-                                onclick="chooseActivity('Reading')">
-                                📚
-                                <span>Reading</span>
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- Character Information -->
-
-            <div class="character-card">
-
-                <h3>⭐ My Character</h3>
-
-                <p>
-                    Hair:
-                    <strong id="selected-hair">Not selected</strong>
-                </p>
-
-                <p>
-                    Clothes:
-                    <strong id="selected-clothes">Not selected</strong>
-                </p>
-
-                <p>
-                    Personality:
-                    <strong id="selected-personality">Not selected</strong>
-                </p>
-
-                <p>
-                    Favourite activity:
-                    <strong id="selected-activity">Not selected</strong>
-                </p>
-
-            </div>
-
-
-            <div class="action-area">
-
-                <button
-                    class="main-button"
-                    onclick="saveCharacter()">
-
-                    ✨ Character Ready!
-
-                </button>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             COMING SOON ROOMS
-        ========================== -->
-
-        <section id="reading" class="page">
-
-            <div class="placeholder-room detective-room">
-
-                <div class="big-icon">🔎</div>
-
-                <p class="eyebrow">MISSION 2</p>
-
-                <h2>Keyword Detective</h2>
-
-                <p>
-                    CIRCLE → UNDERLINE → HUNT → MATCH
-                </p>
-
-                <p class="coming-soon">
-                    🔒 This mission will be unlocked next.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <section id="listening" class="page">
-
-            <div class="placeholder-room radio-room">
-
-                <div class="big-icon">🎧</div>
-
-                <p class="eyebrow">MISSION 3</p>
-
-                <h2>Catch the Clues</h2>
-
-                <p>
-                    Listen carefully and catch the correct information.
-                </p>
-
-                <p class="coming-soon">
-                    🔒 Mission coming soon.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <section id="grammar" class="page">
-
-            <div class="placeholder-room time-room">
-
-                <div class="big-icon">⏳</div>
-
-                <p class="eyebrow">MISSION 4</p>
-
-                <h2>Grammar Time Machine</h2>
-
-                <p>
-                    Past Simple: Affirmative & Negative
-                </p>
-
-                <p class="coming-soon">
-                    🔒 Mission coming soon.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <section id="writing" class="page">
-
-            <div class="placeholder-room writing-room">
-
-                <div class="big-icon">☁️</div>
-
-                <p class="eyebrow">MISSION 5</p>
-
-                <h2>Catch the Words</h2>
-
-                <p>
-                    Catch the correct words and build your sentences.
-                </p>
-
-                <p class="coming-soon">
-                    🔒 Mission coming soon.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <section id="speaking" class="page">
-
-            <div class="placeholder-room speaking-room">
-
-                <div class="big-icon">🎲</div>
-
-                <p class="eyebrow">MISSION 6</p>
-
-                <h2>Random Prompt</h2>
-
-                <p>
-                    Ask. Answer. Swap roles.
-                </p>
-
-                <p class="coming-soon">
-                    🔒 Mission coming soon.
-                </p>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
