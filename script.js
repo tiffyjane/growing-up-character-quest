@@ -1,16 +1,7 @@
 /* =====================================================
    GROWING UP: CHARACTER QUEST
-   VERSION 2
+   VERSION 3
 ===================================================== */
-
-
-/* =====================================================
-   SOUND
-===================================================== */
-
-let soundOn = true;
-
-let audioCtx;
 
 
 /* =====================================================
@@ -19,26 +10,36 @@ let audioCtx;
 
 const character = {
 
-  hair: null,
+  name: "",
 
-  clothes: null,
+  hair: "",
 
-  personality: null,
+  hairEmoji: "",
 
-  activity: null
+  clothes: "",
+
+  clothesEmoji: "",
+
+  personality: "",
+
+  personalityEmoji: "",
+
+  activity: "",
+
+  activityEmoji: ""
 
 };
 
 
 /* =====================================================
-   KEYWORD DETECTIVE STATE
+   DETECTIVE DATA
 ===================================================== */
 
 const detective = {
 
   circle: false,
 
-  underline: false,
+  keywords: [],
 
   hunt: false,
 
@@ -48,144 +49,41 @@ const detective = {
 
 
 /* =====================================================
-   CHARACTER CREATOR
+   SOUND
 ===================================================== */
 
-function choose(type, value, emoji, button) {
+let soundOn = true;
 
-  character[type] = value;
-
-
-  /* Remove previous selection */
-
-  document
-    .querySelectorAll(
-      `[onclick^="choose('${type}'"]`
-    )
-    .forEach(function(btn) {
-
-      btn.classList.remove("selected");
-
-    });
-
-
-  /* Highlight selected button */
-
-  button.classList.add("selected");
-
-
-  /* Update character card */
-
-  document.getElementById(
-    type + "Text"
-  ).textContent = value;
-
-
-  /* Change character */
-
-  if (type === "hair") {
-
-    document.getElementById(
-      "characterAvatar"
-    ).textContent = emoji;
-
-  }
-
-
-  playTone("click");
-
-}
-
-
-/* =====================================================
-   SAVE CHARACTER
-===================================================== */
-
-function saveCharacter() {
-
-  const missing =
-    Object.keys(character)
-      .filter(function(key) {
-
-        return !character[key];
-
-      });
-
-
-  if (missing.length > 0) {
-
-    alert(
-      "Choose one option from each category first."
-    );
-
-    return;
-
-  }
-
-
-  /* Save character */
-
-  localStorage.setItem(
-    "growingUpCharacter",
-    JSON.stringify(character)
-  );
-
-
-  playTone("success");
-
-
-  /* Move to Reading */
-
-  showSection("reading");
-
-
-  resetDetective();
-
-
-  setTimeout(function() {
-
-    showFeedback(
-      "success",
-      "Character ready!",
-      "Your detective case is waiting. Start with the question word."
-    );
-
-  }, 250);
-
-}
+let audioContext;
 
 
 /* =====================================================
    PAGE NAVIGATION
 ===================================================== */
 
-function showSection(id) {
+function showPage(pageId) {
+
 
   document
     .querySelectorAll(".page")
-    .forEach(function(page) {
+    .forEach(page => {
 
-      page.classList.remove(
-        "active-page"
-      );
+      page.classList.remove("active");
 
     });
 
 
-  const selected =
-    document.getElementById(id);
+  const page =
+    document.getElementById(pageId);
 
 
-  if (selected) {
-
-    selected.classList.add(
-      "active-page"
-    );
-
-  }
+  if (!page) return;
 
 
-  const missionNumbers = {
+  page.classList.add("active");
+
+
+  const progress = {
 
     home: 0,
 
@@ -204,14 +102,8 @@ function showSection(id) {
   };
 
 
-  const mission =
-    missionNumbers[id] ?? 0;
-
-
-  const progressText =
-    document.getElementById(
-      "progressText"
-    );
+  const number =
+    progress[pageId] || 0;
 
 
   const progressFill =
@@ -220,7 +112,13 @@ function showSection(id) {
     );
 
 
-  if (mission === 0) {
+  const progressText =
+    document.getElementById(
+      "progressText"
+    );
+
+
+  if (number === 0) {
 
     progressText.textContent =
       "Quest Start";
@@ -233,10 +131,10 @@ function showSection(id) {
   else {
 
     progressText.textContent =
-      `Mission ${mission} / 6`;
+      `Mission ${number} / 6`;
 
     progressFill.style.width =
-      `${(mission / 6) * 100}%`;
+      `${number / 6 * 100}%`;
 
   }
 
@@ -249,15 +147,650 @@ function showSection(id) {
 
   });
 
+
+  playSound("click");
+
 }
 
 
 /* =====================================================
-   KEYWORD DETECTIVE
+   NAME
+===================================================== */
+
+function updateName() {
+
+
+  const input =
+    document.getElementById(
+      "characterName"
+    );
+
+
+  character.name =
+    input.value.trim();
+
+
+  const display =
+    document.getElementById(
+      "displayName"
+    );
+
+
+  display.textContent =
+    character.name ||
+    "Your Character";
+
+
+  updateStoryPreview();
+
+}
+
+
+/* =====================================================
+   CHARACTER OPTIONS
+===================================================== */
+
+function chooseItem(
+  type,
+  value,
+  emoji,
+  button
+) {
+
+
+  character[type] =
+    value;
+
+
+  if (type === "hair") {
+
+    character.hairEmoji =
+      emoji;
+
+    document
+      .getElementById(
+        "characterHair"
+      )
+      .textContent =
+      emoji;
+
+  }
+
+
+  if (type === "clothes") {
+
+    character.clothesEmoji =
+      emoji;
+
+    document
+      .getElementById(
+        "characterClothes"
+      )
+      .textContent =
+      emoji;
+
+  }
+
+
+  if (type === "personality") {
+
+    character.personalityEmoji =
+      emoji;
+
+  }
+
+
+  if (type === "activity") {
+
+    character.activityEmoji =
+      emoji;
+
+  }
+
+
+  /* Remove selection from siblings */
+
+  const parent =
+    button.parentElement;
+
+
+  parent
+    .querySelectorAll("button")
+    .forEach(btn => {
+
+      btn.classList.remove(
+        "selected"
+      );
+
+    });
+
+
+  button.classList.add(
+    "selected"
+  );
+
+
+  updateStoryPreview();
+
+
+  playSound("click");
+
+}
+
+
+/* =====================================================
+   STORY GENERATION
+===================================================== */
+
+function getCharacterName() {
+
+  return character.name ||
+    "your character";
+
+}
+
+
+/* =====================================================
+   APPEARANCE SENTENCE
+===================================================== */
+
+function getAppearanceSentence() {
+
+
+  let hair =
+    character.hair;
+
+
+  if (!hair) {
+
+    return "";
+
+  }
+
+
+  return `When ${getCharacterName()} was seven, ${getCharacterName().toLowerCase() === "your character" ? "they" : "he/she"} had ${hair.toLowerCase()} hair.`;
+
+}
+
+
+/*
+  We use neutral "they" for the generated
+  story because the creator does not ask
+  pupils to select gender.
+*/
+
+
+function getStoryAppearance() {
+
+
+  if (!character.hair) {
+
+    return "";
+
+  }
+
+
+  return `When ${getCharacterName()} was seven, they had ${character.hair.toLowerCase()} hair.`;
+
+}
+
+
+function getPersonalitySentence() {
+
+
+  if (!character.personality) {
+
+    return "";
+
+  }
+
+
+  const personalityMap = {
+
+    friendly:
+      "They were friendly.",
+
+    funny:
+      "They were funny.",
+
+    brave:
+      "They were brave.",
+
+    clever:
+      "They were clever."
+
+  };
+
+
+  return personalityMap[
+    character.personality
+  ];
+
+}
+
+
+function getActivitySentence() {
+
+
+  if (!character.activity) {
+
+    return "";
+
+  }
+
+
+  const activityMap = {
+
+    football:
+      "They played football.",
+
+    badminton:
+      "They played badminton.",
+
+    drawing:
+      "They liked drawing.",
+
+    reading:
+      "They liked reading."
+
+  };
+
+
+  return activityMap[
+    character.activity
+  ];
+
+}
+
+
+/* =====================================================
+   STORY
+===================================================== */
+
+function generateStory() {
+
+
+  const parts = [];
+
+
+  const appearance =
+    getStoryAppearance();
+
+
+  const personality =
+    getPersonalitySentence();
+
+
+  const activity =
+    getActivitySentence();
+
+
+  if (appearance) {
+
+    parts.push(
+      appearance
+    );
+
+  }
+
+
+  if (personality) {
+
+    parts.push(
+      personality
+    );
+
+  }
+
+
+  if (activity) {
+
+    parts.push(
+      activity
+    );
+
+  }
+
+
+  /*
+    Keep a negative sentence in every
+    generated case so pupils practise
+    the target affirmative/negative form.
+  */
+
+  if (character.activity) {
+
+    const dislikes = {
+
+      football:
+        "They didn't like swimming.",
+
+      badminton:
+        "They didn't like swimming.",
+
+      drawing:
+        "They didn't like swimming.",
+
+      reading:
+        "They didn't like swimming."
+
+    };
+
+
+    parts.push(
+      dislikes[
+        character.activity
+      ]
+    );
+
+  }
+
+
+  return parts.join(" ");
+
+}
+
+
+/* =====================================================
+   PREVIEW
+===================================================== */
+
+function updateStoryPreview() {
+
+
+  const preview =
+    document.getElementById(
+      "storyPreview"
+    );
+
+
+  const story =
+    generateStory();
+
+
+  if (!story) {
+
+    preview.textContent =
+      "Choose your character's details to build their story.";
+
+    return;
+
+  }
+
+
+  preview.textContent =
+    story;
+
+}
+
+
+/* =====================================================
+   FINISH CHARACTER
+===================================================== */
+
+function finishCharacter() {
+
+
+  if (!character.name) {
+
+    alert(
+      "Please give your character a name first."
+    );
+
+    return;
+
+  }
+
+
+  if (!character.hair) {
+
+    alert(
+      "Please choose a hairstyle."
+    );
+
+    return;
+
+  }
+
+
+  if (!character.clothes) {
+
+    alert(
+      "Please choose some clothes."
+    );
+
+    return;
+
+  }
+
+
+  if (!character.personality) {
+
+    alert(
+      "Please choose a personality."
+    );
+
+    return;
+
+  }
+
+
+  if (!character.activity) {
+
+    alert(
+      "Please choose a favourite activity."
+    );
+
+    return;
+
+  }
+
+
+  /*
+    Save the character so the story
+    stays available.
+  */
+
+  localStorage.setItem(
+
+    "growingUpCharacter",
+
+    JSON.stringify(character)
+
+  );
+
+
+  playSound("success");
+
+
+  buildReadingMission();
+
+
+  showPage("reading");
+
+}
+
+
+/* =====================================================
+   BUILD READING MISSION
+===================================================== */
+
+function buildReadingMission() {
+
+
+  const name =
+    getCharacterName();
+
+
+  /*
+    QUESTION
+  */
+
+  const question =
+    `What did ${name} like?`;
+
+
+  document.getElementById(
+    "dynamicQuestion"
+  ).innerHTML = `
+
+    <button
+      class="question-word"
+      onclick="circleQuestionWord(this)">
+
+      What
+
+    </button>
+
+    did
+
+    ${name}
+
+    like?
+
+  `;
+
+
+  /*
+    STORY
+  */
+
+  document.getElementById(
+    "storyTitle"
+  ).textContent =
+    `${name}'s Case File`;
+
+
+  document.getElementById(
+    "dynamicStory"
+  ).textContent =
+    generateStory();
+
+
+  /*
+    KEYWORDS
+  */
+
+  buildKeywordButtons();
+
+
+  /*
+    MATCH INSTRUCTION
+  */
+
+  document.getElementById(
+    "matchInstruction"
+  ).textContent =
+    `Find the object that matches what ${name} liked.`;
+
+
+  /*
+    RESET MISSION
+  */
+
+  resetDetective();
+
+}
+
+
+/* =====================================================
+   KEYWORD BUTTONS
+===================================================== */
+
+function buildKeywordButtons() {
+
+
+  const area =
+    document.getElementById(
+      "keywordButtons"
+    );
+
+
+  const name =
+    getCharacterName();
+
+
+  area.innerHTML = "";
+
+
+  const words = [
+
+    "What",
+
+    "did",
+
+    name,
+
+    "like"
+
+  ];
+
+
+  words.forEach(word => {
+
+
+    const button =
+      document.createElement(
+        "button"
+      );
+
+
+    button.className =
+      "keyword-button";
+
+
+    button.textContent =
+      word;
+
+
+    /*
+      Only the question word
+      is selectable at first.
+    */
+
+    if (word === "What") {
+
+      button.onclick =
+        () => {
+
+          circleQuestionWord(
+            document.querySelector(
+              ".question-word"
+            )
+          );
+
+        };
+
+    }
+
+    else {
+
+      button.disabled =
+        true;
+
+      button.style.opacity =
+        ".5";
+
+    }
+
+
+    area.appendChild(
+      button
+    );
+
+  });
+
+}
+
+
+/* =====================================================
    STEP 1 — CIRCLE
 ===================================================== */
 
-function circleWord(element) {
+function circleQuestionWord(
+  element
+) {
+
 
   if (detective.circle) {
 
@@ -266,7 +799,8 @@ function circleWord(element) {
   }
 
 
-  detective.circle = true;
+  detective.circle =
+    true;
 
 
   element.classList.add(
@@ -274,86 +808,62 @@ function circleWord(element) {
   );
 
 
-  /* Update detective board */
-
-  markStep(
-    "stepCircle"
+  completeStep(
+    "boardCircle"
   );
 
 
   unlockStep(
-    "stepUnderline"
+    "boardUnderline"
   );
 
 
-  /* Update instruction */
+  /*
+    Enable keyword buttons
+  */
+
+  const buttons =
+    document.querySelectorAll(
+      ".keyword-button"
+    );
+
+
+  buttons.forEach(
+    button => {
+
+      button.disabled =
+        false;
+
+      button.style.opacity =
+        "1";
+
+      button.onclick =
+        () => underlineKeyword(
+          button
+        );
+
+    }
+  );
+
 
   document.getElementById(
-    "questionHint"
+    "detectiveInstruction"
   ).textContent =
-    "Step 2 unlocked: underline the key words.";
-
-
-  playTone("success");
+    "Step 2: Underline the key words.";
 
 
   showFeedback(
 
-    "success",
+    "⭐",
 
     "Great detective!",
 
-    "You found the question word: WHAT. Now underline the key words."
+    "You found the question word. Now underline the key words."
 
   );
 
 
-  /* Replace question with the next interaction */
-
-  unlockKeywords();
-
-}
-
-
-/* =====================================================
-   WRONG CIRCLE
-===================================================== */
-
-function wrongCircle(element) {
-
-  if (detective.circle) {
-
-    return;
-
-  }
-
-
-  element.classList.add(
-    "wrong"
-  );
-
-
-  setTimeout(function() {
-
-    element.classList.remove(
-      "wrong"
-    );
-
-  }, 300);
-
-
-  playTone("wrong");
-
-
-  showFeedback(
-
-    "wrong",
-
-    "Almost!",
-
-    "Look for the word that asks for information."
-
-  );
+  playSound("success");
 
 }
 
@@ -362,51 +872,10 @@ function wrongCircle(element) {
    STEP 2 — UNDERLINE
 ===================================================== */
 
-function unlockKeywords() {
+function underlineKeyword(
+  button
+) {
 
-  const question =
-    document.getElementById(
-      "questionText"
-    );
-
-
-  question.innerHTML = `
-
-    <button
-      class="question-word circled">
-
-      What
-
-    </button>
-
-    did
-
-    <button
-      class="question-word keyword"
-      onclick="underlineWord(this)">
-
-      Adam
-
-    </button>
-
-    <button
-      class="question-word keyword"
-      onclick="underlineWord(this)">
-
-      like
-
-    </button>?
-
-  `;
-
-}
-
-
-/* =====================================================
-   UNDERLINE WORD
-===================================================== */
-
-function underlineWord(element) {
 
   if (!detective.circle) {
 
@@ -415,85 +884,71 @@ function underlineWord(element) {
   }
 
 
-  element.classList.add(
-    "underlined"
-  );
+  /*
+    We need the character's name
+    and the word "like".
+  */
+
+  const name =
+    getCharacterName();
 
 
-  const selected =
-    document.querySelectorAll(
-      ".question-word.underlined"
-    ).length;
+  const word =
+    button.textContent;
 
-
-  /* Both key words selected */
 
   if (
-    selected >= 2 &&
-    !detective.underline
+    word !== name &&
+    word !== "like"
   ) {
-
-    detective.underline = true;
-
-
-    markStep(
-      "stepUnderline"
-    );
-
-
-    unlockStep(
-      "stepHunt"
-    );
-
-
-    document.getElementById(
-      "questionHint"
-    ).textContent =
-      "Step 3 unlocked: hunt for the clue in the passage.";
-
-
-    /* Unlock clue buttons */
-
-    document
-      .querySelectorAll(".clue-word")
-      .forEach(function(clue) {
-
-        clue.classList.remove(
-          "locked-clue"
-        );
-
-      });
-
-
-    playTone("unlock");
-
 
     showFeedback(
 
-      "success",
+      "🔎",
 
-      "Keywords found!",
+      "Look carefully.",
 
-      "You underlined ADAM and LIKE. Now hunt for the clue."
+      "Underline the important words in the question."
 
+    );
+
+    return;
+
+  }
+
+
+  button.classList.add(
+    "selected"
+  );
+
+
+  if (
+    !detective.keywords.includes(
+      word
+    )
+  ) {
+
+    detective.keywords.push(
+      word
     );
 
   }
 
-  else {
 
-    playTone("click");
+  /*
+    Both key words found.
+  */
 
+  if (
+    detective.keywords.includes(
+      name
+    ) &&
+    detective.keywords.includes(
+      "like"
+    )
+  ) {
 
-    showFeedback(
-
-      "info",
-
-      "Good!",
-
-      "Find and underline the other key word too."
-
-    );
+    unlockHunt();
 
   }
 
@@ -501,18 +956,156 @@ function underlineWord(element) {
 
 
 /* =====================================================
-   STEP 3 — HUNT
+   UNLOCK HUNT
 ===================================================== */
 
-function huntClue(element) {
+function unlockHunt() {
 
-  if (!detective.underline) {
 
-    playTone("wrong");
+  if (
+    document
+      .getElementById(
+        "boardHunt"
+      )
+      .classList.contains("active")
+  ) {
 
     return;
 
   }
+
+
+  completeStep(
+    "boardUnderline"
+  );
+
+
+  unlockStep(
+    "boardHunt"
+  );
+
+
+  document.getElementById(
+    "detectiveInstruction"
+  ).textContent =
+    "Step 3: Hunt for the clue in the story.";
+
+
+  buildClueButtons();
+
+
+  document
+    .getElementById(
+      "huntArea"
+    )
+    .classList.remove(
+      "hidden"
+    );
+
+
+  showFeedback(
+
+    "⭐",
+
+    "Keywords found!",
+
+    "Now hunt through the story for the clue."
+
+  );
+
+
+  playSound("unlock");
+
+}
+
+
+/* =====================================================
+   STEP 3 — CLUE BUTTONS
+===================================================== */
+
+function buildClueButtons() {
+
+
+  const area =
+    document.getElementById(
+      "clueButtons"
+    );
+
+
+  area.innerHTML = "";
+
+
+  const correct =
+    getActivitySentence();
+
+
+  const options = [
+
+    getStoryAppearance(),
+
+    getPersonalitySentence(),
+
+    correct,
+
+    "They didn't like swimming."
+
+  ];
+
+
+  options.forEach(
+    text => {
+
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+
+      button.className =
+        "clue-button";
+
+
+      button.textContent =
+        text;
+
+
+      if (
+        text === correct
+      ) {
+
+        button.onclick =
+          () => findClue(
+            button
+          );
+
+      }
+
+      else {
+
+        button.onclick =
+          () => wrongClue();
+
+      }
+
+
+      area.appendChild(
+        button
+      );
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   FIND CLUE
+===================================================== */
+
+function findClue(
+  button
+) {
 
 
   if (detective.hunt) {
@@ -522,118 +1115,74 @@ function huntClue(element) {
   }
 
 
-  detective.hunt = true;
+  detective.hunt =
+    true;
 
 
-  element.classList.add(
-    "hunted"
-  );
+  button.style.outline =
+    "4px solid #87c98b";
 
 
-  markStep(
-    "stepHunt"
+  completeStep(
+    "boardHunt"
   );
 
 
   unlockStep(
-    "stepMatch"
+    "boardMatch"
   );
 
 
   document.getElementById(
-    "questionHint"
+    "detectiveInstruction"
   ).textContent =
-    "Step 4 unlocked: match the clue to the hidden picture.";
+    "Step 4: Find the picture that matches your clue.";
 
-
-  /* Reveal hidden-object activity */
 
   document
-    .getElementById("matchCard")
-    .classList.remove("hidden");
-
-
-  playTone("success");
+    .getElementById(
+      "matchArea"
+    )
+    .classList.remove(
+      "hidden"
+    );
 
 
   showFeedback(
 
-    "success",
+    "⭐",
 
     "Clue found!",
 
-    "The passage says “liked drawing”. Now find the matching picture."
+    `The clue is: "${button.textContent}" Now find the matching object.`
 
   );
+
+
+  playSound("success");
 
 }
 
 
 /* =====================================================
-   WRONG HUNT
+   WRONG CLUE
 ===================================================== */
 
-function huntWrong(element) {
-
-  if (!detective.underline) {
-
-    showFeedback(
-
-      "info",
-
-      "Finish the steps first.",
-
-      "Complete CIRCLE and UNDERLINE before hunting."
-
-    );
-
-    return;
-
-  }
-
-
-  element.animate(
-
-    [
-
-      {
-        transform:
-          "translateX(-4px)"
-      },
-
-      {
-        transform:
-          "translateX(4px)"
-      },
-
-      {
-        transform:
-          "translateX(0)"
-      }
-
-    ],
-
-    {
-
-      duration: 220
-
-    }
-
-  );
-
-
-  playTone("wrong");
+function wrongClue() {
 
 
   showFeedback(
 
-    "wrong",
+    "🔎",
 
-    "Not this clue.",
+    "Almost!",
 
-    "Read the question again: What did Adam like?"
+    "Read the question again. What did the character like?"
 
   );
+
+
+  playSound("wrong");
 
 }
 
@@ -642,7 +1191,8 @@ function huntWrong(element) {
    STEP 4 — MATCH
 ===================================================== */
 
-function matchObject(objectName) {
+function findObject() {
+
 
   if (!detective.hunt) {
 
@@ -651,246 +1201,218 @@ function matchObject(objectName) {
   }
 
 
-  if (objectName === "drawing") {
-
-    detective.match = true;
-
-
-    markStep(
-      "stepMatch"
-    );
+  detective.match =
+    true;
 
 
-    playTone("success");
-
-
-    /* Show completion */
-
-    document
-      .getElementById(
-        "missionComplete"
-      )
-      .classList.remove(
-        "hidden"
-      );
-
-
-    showFeedback(
-
-      "success",
-
-      "You found the answer!",
-
-      "Excellent detective work. Adam liked drawing."
-
-    );
-
-
-    /* Save progress */
-
-    localStorage.setItem(
-      "readingComplete",
-      "true"
-    );
-
-  }
-
-}
-
-
-/* =====================================================
-   DETECTIVE BOARD
-===================================================== */
-
-function markStep(id) {
-
-  const step =
-    document.getElementById(id);
-
-
-  step.classList.remove(
-    "active"
+  completeStep(
+    "boardMatch"
   );
-
-
-  step.classList.add(
-    "done"
-  );
-
-
-  step.querySelector(
-    "span"
-  ).textContent = "✓";
-
-}
-
-
-/* =====================================================
-   UNLOCK NEXT STEP
-===================================================== */
-
-function unlockStep(id) {
-
-  const step =
-    document.getElementById(id);
-
-
-  step.classList.remove(
-    "locked"
-  );
-
-
-  step.classList.add(
-    "active"
-  );
-
-}
-
-
-/* =====================================================
-   RESET READING MISSION
-===================================================== */
-
-function resetDetective() {
-
-  Object.assign(
-
-    detective,
-
-    {
-
-      circle: false,
-
-      underline: false,
-
-      hunt: false,
-
-      match: false
-
-    }
-
-  );
-
-
-  /* Reset step 1 */
-
-  const circleStep =
-    document.getElementById(
-      "stepCircle"
-    );
-
-
-  circleStep.className =
-    "step active";
-
-
-  circleStep.querySelector(
-    "span"
-  ).textContent = "1";
-
-
-  /* Reset remaining steps */
-
-  [
-    "stepUnderline",
-    "stepHunt",
-    "stepMatch"
-
-  ].forEach(function(id, index) {
-
-    const step =
-      document.getElementById(id);
-
-
-    step.className =
-      "step locked";
-
-
-    step.querySelector(
-      "span"
-    ).textContent =
-      index + 2;
-
-  });
-
-
-  /* Reset question */
-
-  document.getElementById(
-    "questionText"
-  ).innerHTML = `
-
-    <button
-      class="question-word"
-      onclick="circleWord(this)">
-
-      What
-
-    </button>
-
-    did
-
-    <button
-      class="question-word other"
-      onclick="wrongCircle(this)">
-
-      Adam
-
-    </button>
-
-    <button
-      class="question-word other"
-      onclick="wrongCircle(this)">
-
-      like
-
-    </button>?
-
-  `;
 
 
   document.getElementById(
-    "questionHint"
+    "caseComplete"
+  )
+    .classList.remove(
+      "hidden"
+    );
+
+
+  document.getElementById(
+    "finalAnswer"
   ).textContent =
-    "Step 1: Circle the question word.";
-
-
-  /* Hide final sections */
-
-  document
-    .getElementById("matchCard")
-    .classList.add("hidden");
-
-
-  document
-    .getElementById("missionComplete")
-    .classList.add("hidden");
-
-
-  /* Lock clues */
-
-  document
-    .querySelectorAll(".clue-word")
-    .forEach(function(clue) {
-
-      clue.classList.add(
-        "locked-clue"
-      );
-
-      clue.classList.remove(
-        "hunted"
-      );
-
-    });
+    `${getCharacterName()} liked ${character.activity}.`;
 
 
   showFeedback(
 
-    "info",
+    "🏆",
+
+    "Case solved!",
+
+    `Excellent! ${getCharacterName()} liked ${character.activity}.`
+
+  );
+
+
+  playSound("success");
+
+
+  localStorage.setItem(
+    "readingComplete",
+    "true"
+  );
+
+}
+
+
+/* =====================================================
+   BOARD
+===================================================== */
+
+function completeStep(
+  id
+) {
+
+
+  const element =
+    document.getElementById(
+      id
+    );
+
+
+  element.classList.remove(
+    "active"
+  );
+
+
+  element.classList.add(
+    "done"
+  );
+
+
+  element.querySelector(
+    "b"
+  ).textContent =
+    "✓";
+
+}
+
+
+function unlockStep(
+  id
+) {
+
+
+  const element =
+    document.getElementById(
+      id
+    );
+
+
+  element.classList.remove(
+    "locked"
+  );
+
+
+  element.classList.add(
+    "active"
+  );
+
+}
+
+
+/* =====================================================
+   RESET DETECTIVE
+===================================================== */
+
+function resetDetective() {
+
+
+  detective.circle =
+    false;
+
+
+  detective.keywords =
+    [];
+
+
+  detective.hunt =
+    false;
+
+
+  detective.match =
+    false;
+
+
+  [
+    "boardCircle",
+    "boardUnderline",
+    "boardHunt",
+    "boardMatch"
+
+  ].forEach(
+    (id,index) => {
+
+
+      const element =
+        document.getElementById(
+          id
+        );
+
+
+      element.className =
+        "detective-step";
+
+
+      if (
+        index === 0
+      ) {
+
+        element.classList.add(
+          "active"
+        );
+
+      }
+
+      else {
+
+        element.classList.add(
+          "locked"
+        );
+
+      }
+
+
+      element.querySelector(
+        "b"
+      ).textContent =
+        index + 1;
+
+    }
+  );
+
+
+  document
+    .getElementById(
+      "huntArea"
+    )
+    .classList.add(
+      "hidden"
+    );
+
+
+  document
+    .getElementById(
+      "matchArea"
+    )
+    .classList.add(
+      "hidden"
+    );
+
+
+  document
+    .getElementById(
+      "caseComplete"
+    )
+    .classList.add(
+      "hidden"
+    );
+
+
+  document.getElementById(
+    "detectiveInstruction"
+  ).textContent =
+    "Step 1: Circle the question word.";
+
+
+  showFeedback(
+
+    "🔎",
 
     "Detective mission",
 
-    "Start with the question word."
+    "Start by circling the question word."
 
   );
 
@@ -902,41 +1424,31 @@ function resetDetective() {
 ===================================================== */
 
 function showFeedback(
-  type,
+  icon,
   title,
   message
 ) {
 
-  const feedback =
+
+  const box =
     document.getElementById(
-      "feedback"
+      "detectiveFeedback"
     );
 
 
-  const icons = {
-
-    success: "⭐",
-
-    wrong: "🔍",
-
-    info: "🔎"
-
-  };
-
-
-  feedback.querySelector(
+  box.querySelector(
     "span"
   ).textContent =
-    icons[type] || "🔎";
+    icon;
 
 
-  feedback.querySelector(
-    "b"
+  box.querySelector(
+    "strong"
   ).textContent =
     title;
 
 
-  feedback.querySelector(
+  box.querySelector(
     "p"
   ).textContent =
     message;
@@ -945,23 +1457,22 @@ function showFeedback(
 
 
 /* =====================================================
-   SOUND EFFECTS
-   Uses Web Audio API
+   SOUND
 ===================================================== */
 
-function playTone(type) {
+function playSound(
+  type
+) {
 
-  if (!soundOn) {
 
-    return;
-
-  }
+  if (!soundOn) return;
 
 
   try {
 
-    audioCtx =
-      audioCtx ||
+
+    audioContext =
+      audioContext ||
       new (
         window.AudioContext ||
         window.webkitAudioContext
@@ -969,11 +1480,11 @@ function playTone(type) {
 
 
     const oscillator =
-      audioCtx.createOscillator();
+      audioContext.createOscillator();
 
 
     const gain =
-      audioCtx.createGain();
+      audioContext.createGain();
 
 
     oscillator.connect(
@@ -982,33 +1493,26 @@ function playTone(type) {
 
 
     gain.connect(
-      audioCtx.destination
+      audioContext.destination
     );
 
 
-    const sounds = {
+    const tones = {
 
-      click: [520, 0.06],
+      click: 520,
 
-      success: [760, 0.13],
+      success: 760,
 
-      wrong: [180, 0.10],
+      wrong: 190,
 
-      unlock: [980, 0.16]
+      unlock: 980
 
     };
 
 
-    const [
-      frequency,
-      duration
-    ] =
-      sounds[type] ||
-      sounds.click;
-
-
     oscillator.frequency.value =
-      frequency;
+      tones[type] ||
+      520;
 
 
     oscillator.type =
@@ -1018,21 +1522,14 @@ function playTone(type) {
 
 
     gain.gain.setValueAtTime(
-
-      0.045,
-
-      audioCtx.currentTime
-
+      .04,
+      audioContext.currentTime
     );
 
 
     gain.gain.exponentialRampToValueAtTime(
-
-      0.001,
-
-      audioCtx.currentTime +
-      duration
-
+      .001,
+      audioContext.currentTime + .12
     );
 
 
@@ -1040,24 +1537,15 @@ function playTone(type) {
 
 
     oscillator.stop(
-
-      audioCtx.currentTime +
-      duration
-
+      audioContext.currentTime + .12
     );
+
 
   }
 
-  catch (error) {
+  catch(error) {
 
-    /*
-
-      Audio is optional.
-      The website continues
-      working if the browser
-      blocks Web Audio.
-
-    */
+    /* Audio is optional. */
 
   }
 
@@ -1065,17 +1553,18 @@ function playTone(type) {
 
 
 /* =====================================================
-   SOUND BUTTON
+   SOUND TOGGLE
 ===================================================== */
 
 function toggleSound() {
+
 
   soundOn =
     !soundOn;
 
 
   document.getElementById(
-    "soundBtn"
+    "soundButton"
   ).textContent =
     soundOn
       ? "🔊"
@@ -1084,7 +1573,7 @@ function toggleSound() {
 
   if (soundOn) {
 
-    playTone("click");
+    playSound("click");
 
   }
 
@@ -1092,7 +1581,94 @@ function toggleSound() {
 
 
 /* =====================================================
-   START WEBSITE
+   LOAD SAVED CHARACTER
 ===================================================== */
 
-showSection("home");
+function loadCharacter() {
+
+
+  const saved =
+    localStorage.getItem(
+      "growingUpCharacter"
+    );
+
+
+  if (!saved) {
+
+    return;
+
+  }
+
+
+  try {
+
+    const data =
+      JSON.parse(saved);
+
+
+    Object.assign(
+      character,
+      data
+    );
+
+
+    document.getElementById(
+      "characterName"
+    ).value =
+      character.name || "";
+
+
+    document.getElementById(
+      "displayName"
+    ).textContent =
+      character.name ||
+      "Your Character";
+
+
+    if (
+      character.hairEmoji
+    ) {
+
+      document.getElementById(
+        "characterHair"
+      ).textContent =
+        character.hairEmoji;
+
+    }
+
+
+    if (
+      character.clothesEmoji
+    ) {
+
+      document.getElementById(
+        "characterClothes"
+      ).textContent =
+        character.clothesEmoji;
+
+    }
+
+
+    updateStoryPreview();
+
+
+  }
+
+  catch(error) {
+
+    console.log(
+      "No saved character."
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+loadCharacter();
+
+showPage("home");
