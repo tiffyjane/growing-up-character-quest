@@ -46,12 +46,12 @@
     class="logo"
     onclick="showPage('home')">
 
-    🌱 Growing Up
+    Growing Up
 
   </button>
 
 
-  <div class="quest-progress">
+  <div class="progress-area">
 
     <span id="progressText">
       Quest Start
@@ -68,10 +68,10 @@
 
   <button
     class="sound-button"
-    onclick="toggleSound()"
-    id="soundButton">
+    id="soundButton"
+    onclick="toggleSound()">
 
-    🔊
+    SOUND
 
   </button>
 
@@ -93,22 +93,14 @@
 
   <div class="home-world">
 
-
-    <div class="floating-star star-one">
-      ✦
-    </div>
-
-    <div class="floating-star star-two">
-      ✦
-    </div>
-
-    <div class="floating-star star-three">
-      ✦
-    </div>
+    <div class="decor-circle circle-one"></div>
+    <div class="decor-circle circle-two"></div>
+    <div class="decor-star star-one">✦</div>
+    <div class="decor-star star-two">✦</div>
 
 
-    <div class="home-plant">
-      🌱
+    <div class="seed-logo">
+      G
     </div>
 
 
@@ -119,7 +111,7 @@
 
     <h1>
 
-      Growing Up:
+      Growing Up
 
       <span>
         Character Quest
@@ -128,7 +120,7 @@
     </h1>
 
 
-    <p class="home-tagline">
+    <p class="tagline">
       Create it. Discover it. Build it. Tell it!
     </p>
 
@@ -136,7 +128,7 @@
     <p class="home-description">
 
       Create your own character and discover
-      their story through a series of English missions.
+      their story through English missions.
 
     </p>
 
@@ -145,11 +137,7 @@
       class="main-button"
       onclick="showPage('creator')">
 
-      <span>
-        🚀
-      </span>
-
-      Start Your Quest
+      START YOUR QUEST
 
     </button>
 
@@ -157,14 +145,14 @@
     <div class="quest-path">
 
 
-      <div class="path-node active-node">
+      <div class="path-node active">
 
-        <div>
-          👤
+        <div class="node-icon">
+          01
         </div>
 
         <span>
-          Create
+          CREATE
         </span>
 
       </div>
@@ -175,12 +163,12 @@
 
       <div class="path-node">
 
-        <div>
-          🔎
+        <div class="node-icon">
+          02
         </div>
 
         <span>
-          Discover
+          DISCOVER
         </span>
 
       </div>
@@ -191,12 +179,12 @@
 
       <div class="path-node">
 
-        <div>
-          🧠
+        <div class="node-icon">
+          03
         </div>
 
         <span>
-          Build
+          BUILD
         </span>
 
       </div>
@@ -207,12 +195,12 @@
 
       <div class="path-node">
 
-        <div>
-          🗣️
+        <div class="node-icon">
+          04
         </div>
 
         <span>
-          Tell
+          TELL
         </span>
 
       </div>
@@ -220,9 +208,7 @@
 
     </div>
 
-
   </div>
-
 
 </section>
 
@@ -237,13 +223,13 @@
   class="page creator-page">
 
 
-  <div class="creator-topbar">
+  <div class="mission-heading">
 
     <button
-      class="round-back"
+      class="back-button"
       onclick="showPage('home')">
 
-      ←
+      BACK
 
     </button>
 
@@ -251,18 +237,13 @@
     <div>
 
       <span class="mission-label">
-        MISSION 1
+        MISSION 01
       </span>
 
       <h2>
-        Create Your Character
+        Character Creator
       </h2>
 
-    </div>
-
-
-    <div class="mission-number">
-      01
     </div>
 
   </div>
@@ -273,63 +254,22 @@
 
 
     <!-- =================================================
-         ILLUSTRATED ROOM
+         CHARACTER ROOM
     ================================================= -->
 
-    <div class="dress-room">
+    <div class="character-room">
 
 
       <div class="room-window">
 
-        <div class="window-sky">
+        <div class="window-glass">
 
-          ☁️
-          ☁️
+          <div class="cloud cloud-a"></div>
+          <div class="cloud cloud-b"></div>
 
-        </div>
-
-        <div class="window-land">
-          🌳
-        </div>
-
-      </div>
-
-
-      <div class="wall-frame">
-
-        ♡
-
-      </div>
-
-
-      <div class="dress-mirror">
-
-        <div
-          class="mirror-character"
-          id="mirrorCharacter">
-
-          <div
-            class="character-hair"
-            id="characterHair">
-
-            🧑🏻‍🦱
-
-          </div>
-
-
-          <div class="character-face">
-
-            👀
-
-          </div>
-
-
-          <div
-            class="character-clothes"
-            id="characterClothes">
-
-            👕 
-
+          <div class="tree">
+            <div class="tree-top"></div>
+            <div class="tree-trunk"></div>
           </div>
 
         </div>
@@ -337,22 +277,408 @@
       </div>
 
 
-      <div class="dress-stand">
+      <div class="wall-picture">
 
-        <div class="stand-body"></div>
-
-        <div class="stand-leg left"></div>
-        <div class="stand-leg right"></div>
+        <div class="picture-heart">
+          ♥
+        </div>
 
       </div>
 
 
-      <div class="room-stool">
+      <div class="standing-mirror">
 
-        <div class="stool-top"></div>
+        <div class="mirror-frame">
 
-        <div class="stool-leg one"></div>
-        <div class="stool-leg two"></div>
+          <!-- ==========================================
+               ACTUAL SVG CHARACTER
+          =========================================== -->
+
+          <svg
+            id="characterSVG"
+            class="character-svg"
+            viewBox="0 0 300 470"
+            xmlns="http://www.w3.org/2000/svg">
+
+
+            <!-- SHADOW -->
+
+            <ellipse
+              cx="150"
+              cy="448"
+              rx="75"
+              ry="13"
+              fill="#8da7a6"
+              opacity=".28"/>
+
+
+            <!-- LEGS -->
+
+            <rect
+              x="113"
+              y="365"
+              width="25"
+              height="70"
+              rx="12"
+              fill="#f3c3a9"
+              stroke="#5d4c5b"
+              stroke-width="5"/>
+
+            <rect
+              x="162"
+              y="365"
+              width="25"
+              height="70"
+              rx="12"
+              fill="#f3c3a9"
+              stroke="#5d4c5b"
+              stroke-width="5"/>
+
+
+            <!-- SHOES -->
+
+            <path
+              d="M102 429 Q126 417 146 432 L146 447 Q118 454 100 443 Z"
+              fill="#f2a7c4"
+              stroke="#5d4c5b"
+              stroke-width="5"/>
+
+            <path
+              d="M154 432 Q174 417 198 429 L200 443 Q180 454 153 447 Z"
+              fill="#8ac8a1"
+              stroke="#5d4c5b"
+              stroke-width="5"/>
+
+
+            <!-- BODY BASE -->
+
+            <path
+              d="M101 270 Q150 246 199 270 L207 370 Q150 391 93 370 Z"
+              fill="#d8d8e8"
+              stroke="#5d4c5b"
+              stroke-width="6"/>
+
+
+            <!-- T-SHIRT -->
+
+            <g
+              id="clothesTshirt"
+              class="clothes-layer">
+
+              <path
+                d="M102 270 Q150 246 198 270 L217 302 L191 320 L181 295 L181 365 Q150 378 119 365 L119 295 L109 320 L83 302 Z"
+                fill="#79c9d1"
+                stroke="#5d4c5b"
+                stroke-width="6"/>
+
+            </g>
+
+
+            <!-- DRESS -->
+
+            <g
+              id="clothesDress"
+              class="clothes-layer hidden-svg">
+
+              <path
+                d="M117 264 Q150 250 183 264 L175 300 L218 382 Q150 405 82 382 L125 300 Z"
+                fill="#ef9fc1"
+                stroke="#5d4c5b"
+                stroke-width="6"/>
+
+              <path
+                d="M125 302 L175 302"
+                stroke="#ffffff"
+                stroke-width="7"
+                opacity=".8"/>
+
+            </g>
+
+
+            <!-- JACKET -->
+
+            <g
+              id="clothesJacket"
+              class="clothes-layer hidden-svg">
+
+              <path
+                d="M103 269 Q150 248 197 269 L216 311 L190 322 L180 294 L180 367 L120 367 L120 294 L110 322 L84 311 Z"
+                fill="#c39adf"
+                stroke="#5d4c5b"
+                stroke-width="6"/>
+
+              <path
+                d="M150 270 L150 366"
+                stroke="#795ca0"
+                stroke-width="5"/>
+
+              <circle
+                cx="150"
+                cy="303"
+                r="5"
+                fill="#ffffff"/>
+
+              <circle
+                cx="150"
+                cy="327"
+                r="5"
+                fill="#ffffff"/>
+
+            </g>
+
+
+            <!-- SPORTS -->
+
+            <g
+              id="clothesSports"
+              class="clothes-layer hidden-svg">
+
+              <path
+                d="M104 268 Q150 246 196 268 L216 310 L190 322 L180 295 L180 365 L120 365 L120 295 L110 322 L84 310 Z"
+                fill="#79aee9"
+                stroke="#5d4c5b"
+                stroke-width="6"/>
+
+              <path
+                d="M123 275 L177 275"
+                stroke="#ffd86c"
+                stroke-width="8"/>
+
+              <path
+                d="M135 292 L165 292"
+                stroke="#ffffff"
+                stroke-width="5"/>
+
+            </g>
+
+
+            <!-- HEAD -->
+
+            <ellipse
+              cx="150"
+              cy="170"
+              rx="70"
+              ry="82"
+              fill="#f6cbb3"
+              stroke="#5d4c5b"
+              stroke-width="6"/>
+
+
+            <!-- EARS -->
+
+            <circle
+              cx="80"
+              cy="180"
+              r="16"
+              fill="#f6cbb3"
+              stroke="#5d4c5b"
+              stroke-width="5"/>
+
+            <circle
+              cx="220"
+              cy="180"
+              r="16"
+              fill="#f6cbb3"
+              stroke="#5d4c5b"
+              stroke-width="5"/>
+
+
+            <!-- EYES -->
+
+            <ellipse
+              cx="122"
+              cy="175"
+              rx="12"
+              ry="15"
+              fill="#ffffff"
+              stroke="#5d4c5b"
+              stroke-width="4"/>
+
+            <ellipse
+              cx="178"
+              cy="175"
+              rx="12"
+              ry="15"
+              fill="#ffffff"
+              stroke="#5d4c5b"
+              stroke-width="4"/>
+
+            <circle
+              cx="124"
+              cy="177"
+              r="5"
+              fill="#566fa7"/>
+
+            <circle
+              cx="176"
+              cy="177"
+              r="5"
+              fill="#566fa7"/>
+
+
+            <!-- NOSE -->
+
+            <path
+              d="M147 181 Q142 201 152 202"
+              fill="none"
+              stroke="#c78678"
+              stroke-width="4"
+              stroke-linecap="round"/>
+
+
+            <!-- SMILE -->
+
+            <path
+              d="M133 216 Q150 231 167 216"
+              fill="none"
+              stroke="#8d5365"
+              stroke-width="5"
+              stroke-linecap="round"/>
+
+
+            <!-- LONG HAIR -->
+
+            <g
+              id="hairLong"
+              class="hair-layer hidden-svg">
+
+              <path
+                d="M83 174 Q70 70 150 65 Q230 70 217 174 L207 239 Q192 257 180 226 L180 128 Q150 101 120 128 L120 226 Q108 257 93 239 Z"
+                fill="#a96d3f"
+                stroke="#5d4c5b"
+                stroke-width="6"/>
+
+              <path
+                d="M99 121 Q150 85 201 121"
+                fill="none"
+                stroke="#d89450"
+                stroke-width="8"/>
+
+            </g>
+
+
+            <!-- SHORT HAIR -->
+
+            <g
+              id="hairShort"
+              class="hair-layer">
+
+              <path
+                d="M82 153 Q76 74 150 67 Q224 74 218 153 L200 134 Q190 105 150 100 Q110 105 100 134 Z"
+                fill="#7b4e36"
+                stroke="#5d4c5b"
+                stroke-width="6"/>
+
+              <path
+                d="M96 119 Q125 88 150 100 Q175 88 204 119"
+                fill="none"
+                stroke="#a66a43"
+                stroke-width="9"/>
+
+            </g>
+
+
+            <!-- CURLY HAIR -->
+
+            <g
+              id="hairCurly"
+              class="hair-layer hidden-svg">
+
+              <circle
+                cx="95"
+                cy="116"
+                r="28"
+                fill="#6d4935"
+                stroke="#5d4c5b"
+                stroke-width="5"/>
+
+              <circle
+                cx="125"
+                cy="91"
+                r="31"
+                fill="#6d4935"
+                stroke="#5d4c5b"
+                stroke-width="5"/>
+
+              <circle
+                cx="160"
+                cy="86"
+                r="34"
+                fill="#6d4935"
+                stroke="#5d4c5b"
+                stroke-width="5"/>
+
+              <circle
+                cx="195"
+                cy="101"
+                r="30"
+                fill="#6d4935"
+                stroke="#5d4c5b"
+                stroke-width="5"/>
+
+              <circle
+                cx="208"
+                cy="132"
+                r="25"
+                fill="#6d4935"
+                stroke="#5d4c5b"
+                stroke-width="5"/>
+
+            </g>
+
+
+            <!-- BROWN CURLY -->
+
+            <g
+              id="hairBrownCurly"
+              class="hair-layer hidden-svg">
+
+              <circle
+                cx="94"
+                cy="116"
+                r="28"
+                fill="#9b5e3f"
+                stroke="#5d4c5b"
+                stroke-width="5"/>
+
+              <circle
+                cx="125"
+                cy="90"
+                r="31"
+                fill="#9b5e3f"
+                stroke="#5d4c5b"
+                stroke-width="5"/>
+
+              <circle
+                cx="160"
+                cy="86"
+                r="34"
+                fill="#9b5e3f"
+                stroke="#5d4c5b"
+                stroke-width="5"/>
+
+              <circle
+                cx="195"
+                cy="101"
+                r="30"
+                fill="#9b5e3f"
+                stroke="#5d4c5b"
+                stroke-width="5"/>
+
+              <circle
+                cx="208"
+                cy="132"
+                r="25"
+                fill="#9b5e3f"
+                stroke="#5d4c5b"
+                stroke-width="5"/>
+
+            </g>
+
+
+          </svg>
+
+        </div>
 
       </div>
 
@@ -360,14 +686,14 @@
       <div class="room-floor"></div>
 
 
-      <div class="character-name-display">
+      <div class="character-name">
 
         <span>
-          Meet
+          MEET
         </span>
 
         <strong id="displayName">
-          Your Character
+          YOUR CHARACTER
         </strong>
 
       </div>
@@ -378,7 +704,7 @@
 
 
     <!-- =================================================
-         CREATOR CONTROLS
+         CONTROLS
     ================================================= -->
 
     <div class="creator-controls">
@@ -386,35 +712,21 @@
 
       <!-- NAME -->
 
-      <div class="creator-card name-card">
+      <div class="creator-card">
 
-        <div class="card-heading">
+        <span class="control-label">
+          STEP 01
+        </span>
 
-          <span class="heading-icon">
-            ✨
-          </span>
-
-          <div>
-
-            <h3>
-              Name Your Character
-            </h3>
-
-            <p>
-              Give your character a name.
-            </p>
-
-          </div>
-
-        </div>
-
+        <h3>
+          Name your character
+        </h3>
 
         <input
           id="characterName"
           class="name-input"
-          type="text"
-          maxlength="16"
-          placeholder="e.g. Aina"
+          maxlength="15"
+          placeholder="Enter a name"
           oninput="updateName()">
 
       </div>
@@ -425,37 +737,23 @@
 
       <div class="creator-card">
 
-        <div class="card-heading">
+        <span class="control-label">
+          APPEARANCE
+        </span>
 
-          <span class="heading-icon">
-            💇
-          </span>
-
-          <div>
-
-            <h3>
-              Choose Hair
-            </h3>
-
-            <p>
-              Pick your character's hairstyle.
-            </p>
-
-          </div>
-
-        </div>
+        <h3>
+          Choose hair
+        </h3>
 
 
-        <div class="item-grid">
+        <div class="choice-grid">
 
 
           <button
-            class="item-button"
-            onclick="chooseItem('hair','Long','👩🏻',this)">
+            class="choice-card"
+            onclick="chooseHair('long',this)">
 
-            <span class="item-image">
-              👩🏻
-            </span>
+            <span class="hair-preview long-preview"></span>
 
             <small>
               Long
@@ -465,12 +763,10 @@
 
 
           <button
-            class="item-button"
-            onclick="chooseItem('hair','Short','🧑🏻',this)">
+            class="choice-card selected"
+            onclick="chooseHair('short',this)">
 
-            <span class="item-image">
-              🧑🏻
-            </span>
+            <span class="hair-preview short-preview"></span>
 
             <small>
               Short
@@ -480,12 +776,10 @@
 
 
           <button
-            class="item-button"
-            onclick="chooseItem('hair','Curly','🧑🏻‍🦱',this)">
+            class="choice-card"
+            onclick="chooseHair('curly',this)">
 
-            <span class="item-image">
-              🧑🏻‍🦱
-            </span>
+            <span class="hair-preview curly-preview"></span>
 
             <small>
               Curly
@@ -495,15 +789,13 @@
 
 
           <button
-            class="item-button"
-            onclick="chooseItem('hair','Brown curly','👩🏽‍🦱',this)">
+            class="choice-card"
+            onclick="chooseHair('brownCurly',this)">
 
-            <span class="item-image">
-              👩🏽‍🦱
-            </span>
+            <span class="hair-preview brown-preview"></span>
 
             <small>
-              Brown Curly
+              Brown curly
             </small>
 
           </button>
@@ -519,37 +811,23 @@
 
       <div class="creator-card">
 
-        <div class="card-heading">
+        <span class="control-label">
+          APPEARANCE
+        </span>
 
-          <span class="heading-icon">
-            👕
-          </span>
-
-          <div>
-
-            <h3>
-              Choose Clothes
-            </h3>
-
-            <p>
-              Choose what your character wears.
-            </p>
-
-          </div>
-
-        </div>
+        <h3>
+          Choose clothes
+        </h3>
 
 
-        <div class="item-grid">
+        <div class="choice-grid">
 
 
           <button
-            class="item-button"
-            onclick="chooseItem('clothes','T-shirt','👕',this)">
+            class="choice-card selected"
+            onclick="chooseClothes('tshirt',this)">
 
-            <span class="item-image">
-              👕
-            </span>
+            <span class="clothes-preview tshirt-preview"></span>
 
             <small>
               T-shirt
@@ -559,12 +837,10 @@
 
 
           <button
-            class="item-button"
-            onclick="chooseItem('clothes','Dress','👗',this)">
+            class="choice-card"
+            onclick="chooseClothes('dress',this)">
 
-            <span class="item-image">
-              👗
-            </span>
+            <span class="clothes-preview dress-preview"></span>
 
             <small>
               Dress
@@ -574,12 +850,10 @@
 
 
           <button
-            class="item-button"
-            onclick="chooseItem('clothes','Jacket','🧥',this)">
+            class="choice-card"
+            onclick="chooseClothes('jacket',this)">
 
-            <span class="item-image">
-              🧥
-            </span>
+            <span class="clothes-preview jacket-preview"></span>
 
             <small>
               Jacket
@@ -589,12 +863,10 @@
 
 
           <button
-            class="item-button"
-            onclick="chooseItem('clothes','Sports clothes','🥋',this)">
+            class="choice-card"
+            onclick="chooseClothes('sports',this)">
 
-            <span class="item-image">
-              🥋
-            </span>
+            <span class="clothes-preview sports-preview"></span>
 
             <small>
               Sports
@@ -613,70 +885,46 @@
 
       <div class="creator-card">
 
-        <div class="card-heading">
+        <span class="control-label">
+          CHARACTER
+        </span>
 
-          <span class="heading-icon">
-            😊
-          </span>
-
-          <div>
-
-            <h3>
-              Choose Personality
-            </h3>
-
-            <p>
-              How was your character?
-            </p>
-
-          </div>
-
-        </div>
+        <h3>
+          Choose personality
+        </h3>
 
 
-        <div class="personality-grid">
+        <div class="text-choice-grid">
 
 
           <button
-            onclick="chooseItem('personality','friendly','😊',this)">
+            onclick="choosePersonality('friendly',this)">
 
-            😊
-            <span>
-              Friendly
-            </span>
+            FRIENDLY
 
           </button>
 
 
           <button
-            onclick="chooseItem('personality','funny','😂',this)">
+            onclick="choosePersonality('funny',this)">
 
-            😂
-            <span>
-              Funny
-            </span>
+            FUNNY
 
           </button>
 
 
           <button
-            onclick="chooseItem('personality','brave','🦸',this)">
+            onclick="choosePersonality('brave',this)">
 
-            🦸
-            <span>
-              Brave
-            </span>
+            BRAVE
 
           </button>
 
 
           <button
-            onclick="chooseItem('personality','clever','🤓',this)">
+            onclick="choosePersonality('clever',this)">
 
-            🤓
-            <span>
-              Clever
-            </span>
+            CLEVER
 
           </button>
 
@@ -691,74 +939,46 @@
 
       <div class="creator-card">
 
-        <div class="card-heading">
+        <span class="control-label">
+          CHARACTER
+        </span>
 
-          <span class="heading-icon">
-            ⭐
-          </span>
-
-          <div>
-
-            <h3>
-              Choose Favourite Activity
-            </h3>
-
-            <p>
-              What did your character like?
-            </p>
-
-          </div>
-
-        </div>
+        <h3>
+          Favourite activity
+        </h3>
 
 
-        <div class="activity-grid">
+        <div class="text-choice-grid">
 
 
           <button
-            onclick="chooseItem('activity','football','⚽',this)">
+            onclick="chooseActivity('football',this)">
 
-            ⚽
-
-            <span>
-              Football
-            </span>
+            FOOTBALL
 
           </button>
 
 
           <button
-            onclick="chooseItem('activity','badminton','🏸',this)">
+            onclick="chooseActivity('badminton',this)">
 
-            🏸
-
-            <span>
-              Badminton
-            </span>
+            BADMINTON
 
           </button>
 
 
           <button
-            onclick="chooseItem('activity','drawing','🎨',this)">
+            onclick="chooseActivity('drawing',this)">
 
-            🎨
-
-            <span>
-              Drawing
-            </span>
+            DRAWING
 
           </button>
 
 
           <button
-            onclick="chooseItem('activity','reading','📚',this)">
+            onclick="chooseActivity('reading',this)">
 
-            📚
-
-            <span>
-              Reading
-            </span>
+            READING
 
           </button>
 
@@ -769,28 +989,20 @@
 
 
 
-      <!-- PREVIEW -->
+      <!-- STORY PREVIEW -->
 
       <div class="story-preview">
 
-        <span>
-          📖
+        <span class="story-label">
+          YOUR CHARACTER'S STORY
         </span>
 
-        <div>
+        <p id="storyPreview">
 
-          <strong>
-            Your story will be created automatically!
-          </strong>
+          Choose the character details
+          to build the story.
 
-          <p id="storyPreview">
-
-            Choose your character's details
-            to build their story.
-
-          </p>
-
-        </div>
+        </p>
 
       </div>
 
@@ -800,11 +1012,7 @@
         class="ready-button"
         onclick="finishCharacter()">
 
-        <span>
-          ✓
-        </span>
-
-        Character Ready!
+        CREATE MY CHARACTER
 
       </button>
 
@@ -812,7 +1020,6 @@
     </div>
 
   </div>
-
 
 </section>
 
@@ -827,13 +1034,13 @@
   class="page reading-page">
 
 
-  <div class="mission-topbar">
+  <div class="mission-heading">
 
     <button
-      class="round-back"
+      class="back-button"
       onclick="showPage('creator')">
 
-      ←
+      BACK
 
     </button>
 
@@ -841,7 +1048,7 @@
     <div>
 
       <span class="mission-label">
-        MISSION 2
+        MISSION 02
       </span>
 
       <h2>
@@ -850,34 +1057,27 @@
 
     </div>
 
-
-    <div class="mission-number">
-      02
-    </div>
-
   </div>
 
 
 
-  <div class="detective-world">
+  <div class="reading-world">
 
 
-    <!-- DETECTIVE HEADER -->
+    <div class="case-header">
 
-    <div class="detective-sign">
-
-      <div class="magnifying">
-        🔎
+      <div class="magnifier">
+        +
       </div>
 
       <div>
 
         <span>
-          CASE FILE
+          CHARACTER CASE FILE
         </span>
 
-        <strong>
-          CHARACTER MYSTERY
+        <strong id="caseName">
+          CASE
         </strong>
 
       </div>
@@ -886,15 +1086,15 @@
 
 
 
-    <div class="detective-layout">
+    <div class="reading-layout">
 
 
-      <!-- LEFT CASE BOARD -->
+      <!-- BOARD -->
 
       <aside class="detective-board">
 
         <h3>
-          🕵️ Detective Steps
+          Detective Steps
         </h3>
 
 
@@ -906,17 +1106,12 @@
             1
           </b>
 
-          <div>
-
-            <strong>
-              CIRCLE
-            </strong>
-
+          <span>
+            CIRCLE
             <small>
               Question word
             </small>
-
-          </div>
+          </span>
 
         </div>
 
@@ -929,17 +1124,12 @@
             2
           </b>
 
-          <div>
-
-            <strong>
-              UNDERLINE
-            </strong>
-
+          <span>
+            UNDERLINE
             <small>
               Key words
             </small>
-
-          </div>
+          </span>
 
         </div>
 
@@ -952,17 +1142,12 @@
             3
           </b>
 
-          <div>
-
-            <strong>
-              HUNT
-            </strong>
-
+          <span>
+            HUNT
             <small>
               Find the clue
             </small>
-
-          </div>
+          </span>
 
         </div>
 
@@ -975,32 +1160,12 @@
             4
           </b>
 
-          <div>
-
-            <strong>
-              MATCH
-            </strong>
-
+          <span>
+            MATCH
             <small>
-              Find the object
+              Find the picture
             </small>
-
-          </div>
-
-        </div>
-
-
-        <div class="detective-note">
-
-          💡
-
-          <strong>
-            Detective Tip
-          </strong>
-
-          <p>
-            Don't guess. Follow the clues.
-          </p>
+          </span>
 
         </div>
 
@@ -1008,84 +1173,59 @@
 
 
 
-      <!-- MAIN CASE -->
+      <!-- CASE -->
 
-      <div class="case-area">
+      <div class="case-content">
 
 
-        <!-- QUESTION -->
-
-        <div class="case-question">
+        <div class="question-box">
 
           <span>
             CASE QUESTION
           </span>
 
           <h3 id="dynamicQuestion">
-
             What did your character like?
-
           </h3>
 
           <p id="detectiveInstruction">
-
-            Step 1:
-            Circle the question word.
-
+            Step 1: Circle the question word.
           </p>
 
         </div>
 
 
 
-        <!-- CHARACTER STORY -->
+        <div class="story-paper">
 
-        <div class="character-story">
+          <div class="paper-title">
 
-          <div class="story-paper">
+            <span>
+              CASE FILE
+            </span>
 
-            <div class="paper-heading">
-
-              <span>
-                📄
-              </span>
-
-              <div>
-
-                <strong id="storyTitle">
-                  Character Case File
-                </strong>
-
-                <small>
-                  Read the clues carefully.
-                </small>
-
-              </div>
-
-            </div>
-
-
-            <p id="dynamicStory">
-
-              Your character story will appear here.
-
-            </p>
+            <strong id="storyTitle">
+              Character Story
+            </strong>
 
           </div>
 
+
+          <p id="dynamicStory">
+            Your story will appear here.
+          </p>
+
         </div>
 
 
 
-        <!-- KEYWORD AREA -->
-
         <div
           id="keywordArea"
-          class="keyword-area">
+          class="keyword-area hidden">
 
-          <p>
-            Click the important words in the question.
-          </p>
+          <span>
+            UNDERLINE THE KEY WORDS
+          </span>
 
           <div id="keywordButtons"></div>
 
@@ -1093,178 +1233,116 @@
 
 
 
-        <!-- HUNT AREA -->
-
         <div
           id="huntArea"
           class="hunt-area hidden">
 
-          <h3>
-            🟢 HUNT FOR THE CLUE
-          </h3>
+          <span>
+            HUNT FOR THE CLUE
+          </span>
 
-          <p>
-            Which part of the story answers the question?
-          </p>
+          <h3>
+            Which sentence answers the question?
+          </h3>
 
           <div
             id="clueButtons"
-            class="clue-buttons">
-
-          </div>
+            class="clue-buttons"></div>
 
         </div>
 
 
-
-        <!-- MATCH -->
 
         <div
           id="matchArea"
           class="match-area hidden">
 
-          <div class="match-heading">
+          <span>
+            MATCH
+          </span>
 
-            <span>
-              🟡 FINAL MATCH
-            </span>
+          <h3>
+            Find the matching object.
+          </h3>
 
-            <h3>
-              Find the object!
-            </h3>
-
-            <p id="matchInstruction">
-              Search the room for the picture that matches your clue.
-            </p>
-
-          </div>
+          <p id="matchInstruction">
+            Search the room.
+          </p>
 
 
-          <div class="hidden-object-room">
+          <div class="hidden-room">
 
-
-            <div class="object-window">
-              ☁️ 🌳
+            <div class="room-picture">
+              CLOUDS
             </div>
 
-
-            <div class="object-shelf">
-
-              📚
-              🪴
-              ⭐
-
+            <div class="room-shelf">
+              BOOKS
             </div>
 
-
-            <div class="object-bed">
-
-              <span>
-                🧸
-              </span>
-
-              <span>
-                🛏️
-              </span>
-
+            <div class="room-bed">
+              BED
             </div>
 
+            <div class="room-table">
 
-            <div class="object-table">
-
-              🖍️
+              OBJECTS
 
               <button
                 id="targetObject"
                 onclick="findObject()">
 
-                🎨
+                DRAWING
 
               </button>
 
-              📓
-
             </div>
 
-
-            <button
-              class="scene-object football-object">
-
-              ⚽
-
-            </button>
-
-
-            <button
-              class="scene-object book-object">
-
-              📖
-
-            </button>
-
-
-            <div class="object-rug">
-              ◇ ◇ ◇
+            <div class="wrong-object object-one">
+              BALL
             </div>
 
+            <div class="wrong-object object-two">
+              BOOK
+            </div>
 
           </div>
 
         </div>
 
 
-
-        <!-- FEEDBACK -->
 
         <div
-          id="detectiveFeedback"
-          class="detective-feedback">
+          class="feedback"
+          id="detectiveFeedback">
 
-          <span>
-            🔎
-          </span>
+          <strong>
+            Detective mission
+          </strong>
 
-          <div>
-
-            <strong>
-              Detective mission
-            </strong>
-
-            <p>
-              Start by circling the question word.
-            </p>
-
-          </div>
+          <p>
+            Start by circling the question word.
+          </p>
 
         </div>
 
 
-
-        <!-- COMPLETE -->
 
         <div
           id="caseComplete"
           class="case-complete hidden">
 
-          <div class="complete-star">
-            ⭐
+          <div class="trophy">
+            CASE SOLVED
           </div>
 
           <h2>
-            Case Solved!
+            Excellent Detective!
           </h2>
 
           <p id="finalAnswer">
-            Your character liked drawing.
+            You found the answer.
           </p>
-
-          <button
-            onclick="showPage('home')"
-            class="main-button">
-
-            🏆 Quest Map
-
-          </button>
 
         </div>
 
@@ -1275,13 +1353,12 @@
 
   </div>
 
-
 </section>
 
 
 
 <!-- =====================================================
-     PLACEHOLDER MISSIONS
+     FUTURE MISSIONS
 ===================================================== -->
 
 <section
@@ -1289,11 +1366,11 @@
   class="page placeholder-page">
 
   <div class="placeholder-icon">
-    🎧
+    LISTEN
   </div>
 
   <span class="mission-label">
-    MISSION 3
+    MISSION 03
   </span>
 
   <h2>
@@ -1313,11 +1390,11 @@
   class="page placeholder-page">
 
   <div class="placeholder-icon">
-    🧠
+    GRAMMAR
   </div>
 
   <span class="mission-label">
-    MISSION 4
+    MISSION 04
   </span>
 
   <h2>
@@ -1337,11 +1414,11 @@
   class="page placeholder-page">
 
   <div class="placeholder-icon">
-    ✍️
+    WRITE
   </div>
 
   <span class="mission-label">
-    MISSION 5
+    MISSION 05
   </span>
 
   <h2>
@@ -1361,11 +1438,11 @@
   class="page placeholder-page">
 
   <div class="placeholder-icon">
-    🗣️
+    SPEAK
   </div>
 
   <span class="mission-label">
-    MISSION 6
+    MISSION 06
   </span>
 
   <h2>
