@@ -1,0 +1,812 @@
+/* =========================================
+   GROWING UP: CHARACTER QUEST
+   MAIN VISUAL STYLE
+========================================= */
+
+:root {
+    --green: #5bbf8a;
+    --dark-green: #277a59;
+    --light-green: #e9f8ef;
+
+    --purple: #8067d8;
+    --pink: #ef82a8;
+    --yellow: #ffd96a;
+    --blue: #70b7e8;
+
+    --dark: #263238;
+    --muted: #68757d;
+
+    --white: #ffffff;
+    --cream: #fffaf0;
+
+    --shadow:
+        0 10px 30px rgba(38, 50, 56, 0.10);
+
+    --radius: 24px;
+}
+
+
+/* =========================================
+   GENERAL
+========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family:
+        "Trebuchet MS",
+        Arial,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eefaf3,
+            #fff8ed
+        );
+
+    color: var(--dark);
+
+    min-height: 100vh;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.top-nav {
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 28px;
+
+    background: rgba(255,255,255,0.92);
+
+    border-bottom:
+        1px solid rgba(0,0,0,0.06);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 100;
+}
+
+.logo-button {
+    border: none;
+    background: none;
+
+    font-size: 20px;
+    font-weight: 800;
+
+    color: var(--dark-green);
+}
+
+#sound-button {
+    border: none;
+
+    background: var(--light-green);
+
+    width: 44px;
+    height: 44px;
+
+    border-radius: 50%;
+
+    font-size: 20px;
+}
+
+.progress-container {
+    width: 300px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#progress-text {
+    font-size: 13px;
+    font-weight: 700;
+
+    color: var(--muted);
+
+    white-space: nowrap;
+}
+
+.progress-bar {
+    flex: 1;
+
+    height: 9px;
+
+    background: #e6e9e7;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+#progress-fill {
+    height: 100%;
+
+    width: 0%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--green),
+            var(--blue)
+        );
+
+    border-radius: inherit;
+
+    transition: width 0.5s ease;
+}
+
+
+/* =========================================
+   PAGE SYSTEM
+========================================= */
+
+.page {
+    display: none;
+
+    min-height:
+        calc(100vh - 72px);
+
+    padding:
+        50px 30px 70px;
+}
+
+.active-page {
+    display: block;
+
+    animation:
+        pageEnter 0.45s ease;
+}
+
+@keyframes pageEnter {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================
+   HOME
+========================================= */
+
+.home-content {
+    max-width: 1000px;
+
+    margin: auto;
+
+    text-align: center;
+
+    padding-top: 30px;
+}
+
+.home-character {
+    width: 150px;
+    height: 150px;
+
+    margin:
+        0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 90px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #eaf8ef
+        );
+
+    border-radius: 45% 55% 50% 50%;
+
+    box-shadow: var(--shadow);
+
+    animation:
+        floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+}
+
+.eyebrow {
+    color: var(--dark-green);
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
+}
+
+h1 {
+    font-size:
+        clamp(42px, 7vw, 76px);
+
+    line-height: 1;
+
+    margin-bottom: 20px;
+}
+
+h1 span {
+    display: block;
+
+    color: var(--green);
+}
+
+.home-subtitle {
+    font-size: 25px;
+
+    font-weight: 800;
+
+    margin-bottom: 15px;
+}
+
+.home-description {
+    max-width: 650px;
+
+    margin: auto auto 30px;
+
+    color: var(--muted);
+
+    line-height: 1.7;
+
+    font-size: 17px;
+}
+
+.main-button {
+    border: none;
+
+    padding:
+        15px 30px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--green),
+            var(--dark-green)
+        );
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: 900;
+
+    box-shadow:
+        0 7px 0 #216448;
+
+    transition:
+        transform 0.15s,
+        box-shadow 0.15s;
+}
+
+.main-button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 0 #216448;
+}
+
+.main-button:active {
+    transform: translateY(3px);
+
+    box-shadow:
+        0 3px 0 #216448;
+}
+
+
+/* =========================================
+   QUEST PREVIEW
+========================================= */
+
+.quest-preview {
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, 1fr);
+
+    max-width: 850px;
+
+    margin: 55px auto 0;
+
+    gap: 12px;
+}
+
+.quest-preview div {
+    background: white;
+
+    padding: 18px 10px;
+
+    border-radius: 18px;
+
+    box-shadow: var(--shadow);
+
+    font-size: 28px;
+}
+
+.quest-preview small {
+    display: block;
+
+    margin-top: 7px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    color: var(--muted);
+}
+
+
+/* =========================================
+   ROOM HEADER
+========================================= */
+
+.room-header {
+    max-width: 900px;
+
+    margin:
+        0 auto 30px;
+
+    text-align: center;
+}
+
+.room-header h2,
+.placeholder-room h2 {
+    font-size:
+        clamp(32px, 5vw, 52px);
+
+    margin-bottom: 12px;
+}
+
+.room-header p,
+.placeholder-room p {
+    color: var(--muted);
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   DRESSING ROOM
+========================================= */
+
+.dressing-room {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        0.9fr 1.1fr;
+
+    gap: 25px;
+}
+
+
+/* Mirror */
+
+.mirror-area {
+
+    background:
+        linear-gradient(
+            145deg,
+            #f7e8ff,
+            #fff4f8
+        );
+
+    border-radius: var(--radius);
+
+    padding: 30px;
+
+    box-shadow: var(--shadow);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 550px;
+}
+
+.mirror {
+
+    width: 270px;
+    height: 370px;
+
+    border-radius:
+        48% 48% 42% 42%;
+
+    border:
+        12px solid #d8b87a;
+
+    background:
+        linear-gradient(
+            160deg,
+            #e7f8ff,
+            #fff
+        );
+
+    box-shadow:
+        inset 0 0 30px
+        rgba(100,150,180,0.12),
+        0 15px 35px
+        rgba(0,0,0,0.12);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.character {
+    text-align: center;
+
+    animation:
+        characterAppear 0.3s ease;
+}
+
+@keyframes characterAppear {
+
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+}
+
+.char-hair {
+    font-size: 70px;
+
+    height: 75px;
+}
+
+.char-face {
+    font-size: 75px;
+}
+
+.char-clothes {
+    font-size: 80px;
+}
+
+.mirror-label {
+    margin-top: 15px;
+
+    font-weight: 900;
+
+    color: var(--purple);
+}
+
+
+/* Wardrobe */
+
+.wardrobe {
+
+    background: white;
+
+    border-radius: var(--radius);
+
+    padding: 25px;
+
+    box-shadow: var(--shadow);
+}
+
+.choice-section {
+    margin-bottom: 25px;
+}
+
+.choice-section h3 {
+    font-size: 17px;
+
+    margin-bottom: 12px;
+}
+
+.choice-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+.choice-grid button {
+
+    min-height: 82px;
+
+    border:
+        2px solid #edf0ee;
+
+    background:
+        #fbfcfb;
+
+    border-radius: 16px;
+
+    font-size: 28px;
+
+    transition:
+        transform 0.2s,
+        border 0.2s,
+        background 0.2s;
+}
+
+.choice-grid button span {
+    display: block;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    color: var(--muted);
+
+    margin-top: 5px;
+}
+
+.choice-grid button:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        var(--green);
+
+    background:
+        var(--light-green);
+}
+
+
+/* =========================================
+   CHARACTER CARD
+========================================= */
+
+.character-card {
+
+    max-width: 1100px;
+
+    margin:
+        25px auto;
+
+    padding: 25px;
+
+    background: white;
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 12px;
+
+    align-items: center;
+}
+
+.character-card h3 {
+    color: var(--dark-green);
+}
+
+.character-card p {
+    font-size: 13px;
+
+    color: var(--muted);
+}
+
+.character-card strong {
+    display: block;
+
+    color: var(--dark);
+
+    margin-top: 3px;
+}
+
+.action-area {
+    text-align: center;
+
+    margin-top: 25px;
+}
+
+
+/* =========================================
+   PLACEHOLDER ROOMS
+========================================= */
+
+.placeholder-room {
+
+    max-width: 950px;
+
+    margin: 50px auto;
+
+    padding: 80px 30px;
+
+    border-radius:
+        35px;
+
+    text-align: center;
+
+    background: white;
+
+    box-shadow: var(--shadow);
+}
+
+.big-icon {
+    font-size: 90px;
+
+    margin-bottom: 20px;
+}
+
+.coming-soon {
+    display: inline-block;
+
+    margin-top: 25px;
+
+    padding: 10px 18px;
+
+    background:
+        #f1f3f2;
+
+    border-radius: 30px;
+
+    font-weight: 800;
+}
+
+
+/* Different room identities */
+
+.detective-room {
+    background:
+        linear-gradient(
+            145deg,
+            #f1ecff,
+            #ffffff
+        );
+}
+
+.radio-room {
+    background:
+        linear-gradient(
+            145deg,
+            #e7f7ff,
+            #ffffff
+        );
+}
+
+.time-room {
+    background:
+        linear-gradient(
+            145deg,
+            #fff4cf,
+            #ffffff
+        );
+}
+
+.writing-room {
+    background:
+        linear-gradient(
+            145deg,
+            #eaf8ff,
+            #ffffff
+        );
+}
+
+.speaking-room {
+    background:
+        linear-gradient(
+            145deg,
+            #fff0f6,
+            #ffffff
+        );
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 850px) {
+
+    .progress-container {
+        display: none;
+    }
+
+    .dressing-room {
+        grid-template-columns: 1fr;
+    }
+
+    .character-card {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .quest-preview {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .top-nav {
+        padding:
+            10px 15px;
+    }
+
+    .page {
+        padding:
+            35px 15px 60px;
+    }
+
+    .quest-preview {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .choice-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .character-card {
+        grid-template-columns: 1fr;
+    }
+
+    .mirror {
+        width: 220px;
+        height: 310px;
+    }
+
+}
