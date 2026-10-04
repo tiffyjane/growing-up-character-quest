@@ -1,30 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Growing Up: Character Quest</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>
+    Growing Up: Character Quest
+  </title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com">
 
-  <link rel="stylesheet" href="style.css">
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <link
+    rel="stylesheet"
+    href="style.css">
+
 </head>
+
 
 <body>
 
+
 <!-- =====================================================
-     TOP NAVIGATION
+     TOP BAR
 ===================================================== -->
 
 <header class="topbar">
 
-  <button class="logo" onclick="showSection('home')">
+  <button
+    class="logo"
+    onclick="showPage('home')">
+
     🌱 Growing Up
+
   </button>
+
 
   <div class="quest-progress">
 
@@ -33,22 +58,29 @@
     </span>
 
     <div class="progress-track">
+
       <div id="progressFill"></div>
+
     </div>
 
   </div>
 
+
   <button
-    class="sound-btn"
+    class="sound-button"
     onclick="toggleSound()"
-    id="soundBtn">
+    id="soundButton">
+
     🔊
+
   </button>
 
 </header>
 
 
+
 <main>
+
 
 <!-- =====================================================
      HOME
@@ -56,74 +88,144 @@
 
 <section
   id="home"
-  class="page active-page home-page">
+  class="page active">
 
-  <div class="hero-orbit">
-    🌱
+
+  <div class="home-world">
+
+
+    <div class="floating-star star-one">
+      ✦
+    </div>
+
+    <div class="floating-star star-two">
+      ✦
+    </div>
+
+    <div class="floating-star star-three">
+      ✦
+    </div>
+
+
+    <div class="home-plant">
+      🌱
+    </div>
+
+
+    <p class="eyebrow">
+      YEAR 5 ENGLISH ADVENTURE
+    </p>
+
+
+    <h1>
+
+      Growing Up:
+
+      <span>
+        Character Quest
+      </span>
+
+    </h1>
+
+
+    <p class="home-tagline">
+      Create it. Discover it. Build it. Tell it!
+    </p>
+
+
+    <p class="home-description">
+
+      Create your own character and discover
+      their story through a series of English missions.
+
+    </p>
+
+
+    <button
+      class="main-button"
+      onclick="showPage('creator')">
+
+      <span>
+        🚀
+      </span>
+
+      Start Your Quest
+
+    </button>
+
+
+    <div class="quest-path">
+
+
+      <div class="path-node active-node">
+
+        <div>
+          👤
+        </div>
+
+        <span>
+          Create
+        </span>
+
+      </div>
+
+
+      <div class="path-line"></div>
+
+
+      <div class="path-node">
+
+        <div>
+          🔎
+        </div>
+
+        <span>
+          Discover
+        </span>
+
+      </div>
+
+
+      <div class="path-line"></div>
+
+
+      <div class="path-node">
+
+        <div>
+          🧠
+        </div>
+
+        <span>
+          Build
+        </span>
+
+      </div>
+
+
+      <div class="path-line"></div>
+
+
+      <div class="path-node">
+
+        <div>
+          🗣️
+        </div>
+
+        <span>
+          Tell
+        </span>
+
+      </div>
+
+
+    </div>
+
+
   </div>
 
-  <p class="eyebrow">
-    YEAR 5 ENGLISH QUEST
-  </p>
-
-  <h1>
-    Growing Up:
-    <span>Character Quest</span>
-  </h1>
-
-  <p class="tagline">
-    Create it. Discover it. Build it. Tell it!
-  </p>
-
-  <p class="hero-copy">
-    Create a character and discover their story through
-    Reading, Listening, Grammar, Writing and Speaking.
-  </p>
-
-  <button
-    class="primary-btn"
-    onclick="showSection('creator')">
-
-    🚀 Start Your Quest
-
-  </button>
-
-
-  <div class="quest-map">
-
-    <div>
-      <span>👤</span>
-      <b>Character</b>
-    </div>
-
-    <div>
-      <span>🔎</span>
-      <b>Reading</b>
-    </div>
-
-    <div>
-      <span>🎧</span>
-      <b>Listening</b>
-    </div>
-
-    <div>
-      <span>🧠</span>
-      <b>Grammar</b>
-    </div>
-
-    <div>
-      <span>✍️</span>
-      <b>Writing</b>
-    </div>
-
-    <div>
-      <span>🗣️</span>
-      <b>Speaking</b>
-    </div>
-
-  </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -134,105 +236,278 @@
   id="creator"
   class="page creator-page">
 
-  <div class="section-heading">
 
-    <p class="eyebrow">
-      MISSION 1
-    </p>
+  <div class="creator-topbar">
 
-    <h2>
-      👗 Character Creator
-    </h2>
+    <button
+      class="round-back"
+      onclick="showPage('home')">
 
-    <p>
-      Welcome to the dressing room!
-      Create your character before beginning your quest.
-    </p>
+      ←
+
+    </button>
+
+
+    <div>
+
+      <span class="mission-label">
+        MISSION 1
+      </span>
+
+      <h2>
+        Create Your Character
+      </h2>
+
+    </div>
+
+
+    <div class="mission-number">
+      01
+    </div>
 
   </div>
 
 
-  <div class="creator-grid">
+
+  <div class="creator-game">
 
 
-    <!-- CHARACTER DISPLAY -->
+    <!-- =================================================
+         ILLUSTRATED ROOM
+    ================================================= -->
 
-    <div class="dressing-room">
-
-      <div class="mirror-light l1"></div>
-      <div class="mirror-light l2"></div>
-      <div class="mirror-light l3"></div>
-      <div class="mirror-light l4"></div>
+    <div class="dress-room">
 
 
-      <div class="mirror">
+      <div class="room-window">
+
+        <div class="window-sky">
+
+          ☁️
+          ☁️
+
+        </div>
+
+        <div class="window-land">
+          🌳
+        </div>
+
+      </div>
+
+
+      <div class="wall-frame">
+
+        ♡
+
+      </div>
+
+
+      <div class="dress-mirror">
 
         <div
-          id="characterAvatar"
-          class="avatar">
+          class="mirror-character"
+          id="mirrorCharacter">
 
-          🧑🏻‍🦱
+          <div
+            class="character-hair"
+            id="characterHair">
+
+            🧑🏻‍🦱
+
+          </div>
+
+
+          <div class="character-face">
+
+            👀
+
+          </div>
+
+
+          <div
+            class="character-clothes"
+            id="characterClothes">
+
+            👕 
+
+          </div>
 
         </div>
 
       </div>
 
 
+      <div class="dress-stand">
+
+        <div class="stand-body"></div>
+
+        <div class="stand-leg left"></div>
+        <div class="stand-leg right"></div>
+
+      </div>
+
+
+      <div class="room-stool">
+
+        <div class="stool-top"></div>
+
+        <div class="stool-leg one"></div>
+        <div class="stool-leg two"></div>
+
+      </div>
+
+
       <div class="room-floor"></div>
+
+
+      <div class="character-name-display">
+
+        <span>
+          Meet
+        </span>
+
+        <strong id="displayName">
+          Your Character
+        </strong>
+
+      </div>
+
 
     </div>
 
 
 
-    <!-- CREATOR OPTIONS -->
+    <!-- =================================================
+         CREATOR CONTROLS
+    ================================================= -->
 
-    <div class="creator-panel">
+    <div class="creator-controls">
+
+
+      <!-- NAME -->
+
+      <div class="creator-card name-card">
+
+        <div class="card-heading">
+
+          <span class="heading-icon">
+            ✨
+          </span>
+
+          <div>
+
+            <h3>
+              Name Your Character
+            </h3>
+
+            <p>
+              Give your character a name.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <input
+          id="characterName"
+          class="name-input"
+          type="text"
+          maxlength="16"
+          placeholder="e.g. Aina"
+          oninput="updateName()">
+
+      </div>
+
 
 
       <!-- HAIR -->
 
-      <div class="choice-block">
+      <div class="creator-card">
 
-        <h3>
-          💇 Choose Hair
-        </h3>
+        <div class="card-heading">
 
-        <div class="choices">
+          <span class="heading-icon">
+            💇
+          </span>
+
+          <div>
+
+            <h3>
+              Choose Hair
+            </h3>
+
+            <p>
+              Pick your character's hairstyle.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="item-grid">
+
 
           <button
-            onclick="choose('hair','Curly','🧑🏻‍🦱',this)">
+            class="item-button"
+            onclick="chooseItem('hair','Long','👩🏻',this)">
 
-            🧑🏻‍🦱
-            <span>Curly</span>
+            <span class="item-image">
+              👩🏻
+            </span>
+
+            <small>
+              Long
+            </small>
 
           </button>
 
 
           <button
-            onclick="choose('hair','Long','👩🏻',this)">
+            class="item-button"
+            onclick="chooseItem('hair','Short','🧑🏻',this)">
 
-            👩🏻
-            <span>Long</span>
+            <span class="item-image">
+              🧑🏻
+            </span>
 
-          </button>
-
-
-          <button
-            onclick="choose('hair','Short','🧑🏻',this)">
-
-            🧑🏻
-            <span>Short</span>
+            <small>
+              Short
+            </small>
 
           </button>
 
 
           <button
-            onclick="choose('hair','Brown curly','👩🏽‍🦱',this)">
+            class="item-button"
+            onclick="chooseItem('hair','Curly','🧑🏻‍🦱',this)">
 
-            👩🏽‍🦱
-            <span>Brown curly</span>
+            <span class="item-image">
+              🧑🏻‍🦱
+            </span>
+
+            <small>
+              Curly
+            </small>
 
           </button>
+
+
+          <button
+            class="item-button"
+            onclick="chooseItem('hair','Brown curly','👩🏽‍🦱',this)">
+
+            <span class="item-image">
+              👩🏽‍🦱
+            </span>
+
+            <small>
+              Brown Curly
+            </small>
+
+          </button>
+
 
         </div>
 
@@ -242,48 +517,91 @@
 
       <!-- CLOTHES -->
 
-      <div class="choice-block">
+      <div class="creator-card">
 
-        <h3>
-          👕 Choose Clothes
-        </h3>
+        <div class="card-heading">
 
-        <div class="choices">
-
-          <button
-            onclick="choose('clothes','T-shirt','👕',this)">
-
+          <span class="heading-icon">
             👕
-            <span>T-shirt</span>
+          </span>
+
+          <div>
+
+            <h3>
+              Choose Clothes
+            </h3>
+
+            <p>
+              Choose what your character wears.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="item-grid">
+
+
+          <button
+            class="item-button"
+            onclick="chooseItem('clothes','T-shirt','👕',this)">
+
+            <span class="item-image">
+              👕
+            </span>
+
+            <small>
+              T-shirt
+            </small>
 
           </button>
 
 
           <button
-            onclick="choose('clothes','Dress','👗',this)">
+            class="item-button"
+            onclick="chooseItem('clothes','Dress','👗',this)">
 
-            👗
-            <span>Dress</span>
+            <span class="item-image">
+              👗
+            </span>
 
-          </button>
-
-
-          <button
-            onclick="choose('clothes','Jacket','🧥',this)">
-
-            🧥
-            <span>Jacket</span>
+            <small>
+              Dress
+            </small>
 
           </button>
 
 
           <button
-            onclick="choose('clothes','Sports','🥋',this)">
+            class="item-button"
+            onclick="chooseItem('clothes','Jacket','🧥',this)">
 
-            🥋
-            <span>Sports</span>
+            <span class="item-image">
+              🧥
+            </span>
+
+            <small>
+              Jacket
+            </small>
 
           </button>
+
+
+          <button
+            class="item-button"
+            onclick="chooseItem('clothes','Sports clothes','🥋',this)">
+
+            <span class="item-image">
+              🥋
+            </span>
+
+            <small>
+              Sports
+            </small>
+
+          </button>
+
 
         </div>
 
@@ -293,48 +611,75 @@
 
       <!-- PERSONALITY -->
 
-      <div class="choice-block">
+      <div class="creator-card">
 
-        <h3>
-          😊 Choose Personality
-        </h3>
+        <div class="card-heading">
 
-        <div class="choices">
+          <span class="heading-icon">
+            😊
+          </span>
+
+          <div>
+
+            <h3>
+              Choose Personality
+            </h3>
+
+            <p>
+              How was your character?
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="personality-grid">
+
 
           <button
-            onclick="choose('personality','Friendly','😊',this)">
+            onclick="chooseItem('personality','friendly','😊',this)">
 
             😊
-            <span>Friendly</span>
+            <span>
+              Friendly
+            </span>
 
           </button>
 
 
           <button
-            onclick="choose('personality','Funny','😂',this)">
+            onclick="chooseItem('personality','funny','😂',this)">
 
             😂
-            <span>Funny</span>
+            <span>
+              Funny
+            </span>
 
           </button>
 
 
           <button
-            onclick="choose('personality','Brave','🦸',this)">
+            onclick="chooseItem('personality','brave','🦸',this)">
 
             🦸
-            <span>Brave</span>
+            <span>
+              Brave
+            </span>
 
           </button>
 
 
           <button
-            onclick="choose('personality','Clever','🤓',this)">
+            onclick="chooseItem('personality','clever','🤓',this)">
 
             🤓
-            <span>Clever</span>
+            <span>
+              Clever
+            </span>
 
           </button>
+
 
         </div>
 
@@ -344,48 +689,79 @@
 
       <!-- ACTIVITY -->
 
-      <div class="choice-block">
+      <div class="creator-card">
 
-        <h3>
-          ⚽ Favourite Activity
-        </h3>
+        <div class="card-heading">
 
-        <div class="choices">
+          <span class="heading-icon">
+            ⭐
+          </span>
+
+          <div>
+
+            <h3>
+              Choose Favourite Activity
+            </h3>
+
+            <p>
+              What did your character like?
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="activity-grid">
+
 
           <button
-            onclick="choose('activity','Football','⚽',this)">
+            onclick="chooseItem('activity','football','⚽',this)">
 
             ⚽
-            <span>Football</span>
+
+            <span>
+              Football
+            </span>
 
           </button>
 
 
           <button
-            onclick="choose('activity','Badminton','🏸',this)">
+            onclick="chooseItem('activity','badminton','🏸',this)">
 
             🏸
-            <span>Badminton</span>
+
+            <span>
+              Badminton
+            </span>
 
           </button>
 
 
           <button
-            onclick="choose('activity','Drawing','🎨',this)">
+            onclick="chooseItem('activity','drawing','🎨',this)">
 
             🎨
-            <span>Drawing</span>
+
+            <span>
+              Drawing
+            </span>
 
           </button>
 
 
           <button
-            onclick="choose('activity','Reading','📚',this)">
+            onclick="chooseItem('activity','reading','📚',this)">
 
             📚
-            <span>Reading</span>
+
+            <span>
+              Reading
+            </span>
 
           </button>
+
 
         </div>
 
@@ -393,63 +769,57 @@
 
 
 
-      <!-- CHARACTER CARD -->
+      <!-- PREVIEW -->
 
-      <div class="character-card">
+      <div class="story-preview">
 
-        <h3>
-          ⭐ My Character
-        </h3>
+        <span>
+          📖
+        </span>
 
-        <p>
-          Hair:
-          <b id="hairText">
-            Not selected
-          </b>
-        </p>
+        <div>
 
-        <p>
-          Clothes:
-          <b id="clothesText">
-            Not selected
-          </b>
-        </p>
+          <strong>
+            Your story will be created automatically!
+          </strong>
 
-        <p>
-          Personality:
-          <b id="personalityText">
-            Not selected
-          </b>
-        </p>
+          <p id="storyPreview">
 
-        <p>
-          Favourite activity:
-          <b id="activityText">
-            Not selected
-          </b>
-        </p>
+            Choose your character's details
+            to build their story.
+
+          </p>
+
+        </div>
 
       </div>
 
 
-      <button
-        class="primary-btn full"
-        onclick="saveCharacter()">
 
-        ✨ Character Ready!
+      <button
+        class="ready-button"
+        onclick="finishCharacter()">
+
+        <span>
+          ✓
+        </span>
+
+        Character Ready!
 
       </button>
+
 
     </div>
 
   </div>
+
 
 </section>
 
 
 
 <!-- =====================================================
-     READING — KEYWORD DETECTIVE
+     READING
 ===================================================== -->
 
 <section
@@ -457,461 +827,461 @@
   class="page reading-page">
 
 
-  <!-- HEADER -->
+  <div class="mission-topbar">
 
-  <div class="detective-header">
+    <button
+      class="round-back"
+      onclick="showPage('creator')">
+
+      ←
+
+    </button>
+
 
     <div>
 
-      <p class="eyebrow">
+      <span class="mission-label">
         MISSION 2
-      </p>
+      </span>
 
       <h2>
-        🔎 Keyword Detective
+        Keyword Detective
       </h2>
-
-      <p>
-        Follow the clues in order.
-        Complete every step to solve the case.
-      </p>
 
     </div>
 
 
-    <div class="case-badge">
-
-      CASE
-
-      <strong>
-        001
-      </strong>
-
+    <div class="mission-number">
+      02
     </div>
 
   </div>
 
 
 
-  <div class="detective-layout">
+  <div class="detective-world">
 
 
-    <!-- =================================================
-         DETECTIVE BOARD
-    ================================================= -->
+    <!-- DETECTIVE HEADER -->
 
-    <aside class="case-board">
+    <div class="detective-sign">
 
-      <div class="case-title">
-        🕵️ DETECTIVE FILE
+      <div class="magnifying">
+        🔎
       </div>
 
+      <div>
 
-      <!-- STEP 1 -->
-
-      <div
-        class="step active"
-        id="stepCircle">
-
-        <span>1</span>
-
-        <div>
-
-          <b>
-            CIRCLE
-          </b>
-
-          <small>
-            Question word
-          </small>
-
-        </div>
-
-      </div>
-
-
-      <!-- STEP 2 -->
-
-      <div
-        class="step locked"
-        id="stepUnderline">
-
-        <span>2</span>
-
-        <div>
-
-          <b>
-            UNDERLINE
-          </b>
-
-          <small>
-            Key words
-          </small>
-
-        </div>
-
-      </div>
-
-
-      <!-- STEP 3 -->
-
-      <div
-        class="step locked"
-        id="stepHunt">
-
-        <span>3</span>
-
-        <div>
-
-          <b>
-            HUNT
-          </b>
-
-          <small>
-            Find the clue
-          </small>
-
-        </div>
-
-      </div>
-
-
-      <!-- STEP 4 -->
-
-      <div
-        class="step locked"
-        id="stepMatch">
-
-        <span>4</span>
-
-        <div>
-
-          <b>
-            MATCH
-          </b>
-
-          <small>
-            Find the object
-          </small>
-
-        </div>
-
-      </div>
-
-
-      <div class="detective-tip">
-
-        💡
-
-        <b>
-          Detective tip:
-        </b>
-
-        <br>
-
-        Don't guess.
-        Use the words in the question
-        to guide you to the clue.
-
-      </div>
-
-    </aside>
-
-
-
-    <!-- =================================================
-         MAIN DETECTIVE AREA
-    ================================================= -->
-
-    <div class="mission-main">
-
-
-      <!-- QUESTION -->
-
-      <div class="question-card">
-
-        <span class="label">
-          CASE QUESTION
+        <span>
+          CASE FILE
         </span>
 
+        <strong>
+          CHARACTER MYSTERY
+        </strong>
 
-        <h3 id="questionText">
+      </div>
 
-          <button
-            class="question-word"
-            onclick="circleWord(this)">
+    </div>
 
-            What
 
-          </button>
 
-          did
+    <div class="detective-layout">
 
-          <button
-            class="question-word other"
-            onclick="wrongCircle(this)">
 
-            Adam
+      <!-- LEFT CASE BOARD -->
 
-          </button>
+      <aside class="detective-board">
 
-          <button
-            class="question-word other"
-            onclick="wrongCircle(this)">
-
-            like
-
-          </button>?
-
+        <h3>
+          🕵️ Detective Steps
         </h3>
 
 
-        <p id="questionHint">
-
-          Step 1:
-          Circle the question word.
-
-        </p>
-
-      </div>
-
-
-
-      <!-- READING PASSAGE -->
-
-      <div class="passage-card">
-
-        <div class="passage-title">
-
-          📄 ADAM'S CASE FILE
-
-        </div>
-
-
-        <p class="reading-text">
-
-          When Adam was seven,
-          he had short black hair.
-          He played football with his friends.
-          He liked drawing,
-          but he didn't like swimming.
-
-        </p>
-
-
-        <!-- HUNT OPTIONS -->
-
         <div
-          class="hunt-area"
-          id="huntArea">
-
-
-          <button
-            class="clue-word locked-clue"
-            onclick="huntWrong(this)">
-
-            short black hair
-
-          </button>
-
-
-          <button
-            class="clue-word locked-clue"
-            onclick="huntWrong(this)">
-
-            played football
-
-          </button>
-
-
-          <button
-            class="clue-word correct-clue"
-            onclick="huntClue(this)">
-
-            liked drawing
-
-          </button>
-
-
-          <button
-            class="clue-word locked-clue"
-            onclick="huntWrong(this)">
-
-            didn't like swimming
-
-          </button>
-
-
-        </div>
-
-      </div>
-
-
-
-      <!-- FEEDBACK -->
-
-      <div
-        class="feedback"
-        id="feedback">
-
-        <span>
-          🔎
-        </span>
-
-        <div>
+          id="boardCircle"
+          class="detective-step active">
 
           <b>
-            Detective mission
+            1
           </b>
 
+          <div>
+
+            <strong>
+              CIRCLE
+            </strong>
+
+            <small>
+              Question word
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="boardUnderline"
+          class="detective-step locked">
+
+          <b>
+            2
+          </b>
+
+          <div>
+
+            <strong>
+              UNDERLINE
+            </strong>
+
+            <small>
+              Key words
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="boardHunt"
+          class="detective-step locked">
+
+          <b>
+            3
+          </b>
+
+          <div>
+
+            <strong>
+              HUNT
+            </strong>
+
+            <small>
+              Find the clue
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="boardMatch"
+          class="detective-step locked">
+
+          <b>
+            4
+          </b>
+
+          <div>
+
+            <strong>
+              MATCH
+            </strong>
+
+            <small>
+              Find the object
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="detective-note">
+
+          💡
+
+          <strong>
+            Detective Tip
+          </strong>
+
           <p>
-            Start with the question word.
+            Don't guess. Follow the clues.
           </p>
 
         </div>
 
-      </div>
+      </aside>
 
 
 
-      <!-- =================================================
-           MATCH — HIDDEN OBJECT
-      ================================================= -->
+      <!-- MAIN CASE -->
 
-      <div
-        class="match-card hidden"
-        id="matchCard">
+      <div class="case-area">
 
 
-        <div class="match-intro">
+        <!-- QUESTION -->
 
-          <span class="label">
-            FINAL CLUE
+        <div class="case-question">
+
+          <span>
+            CASE QUESTION
           </span>
 
+          <h3 id="dynamicQuestion">
+
+            What did your character like?
+
+          </h3>
+
+          <p id="detectiveInstruction">
+
+            Step 1:
+            Circle the question word.
+
+          </p>
+
+        </div>
+
+
+
+        <!-- CHARACTER STORY -->
+
+        <div class="character-story">
+
+          <div class="story-paper">
+
+            <div class="paper-heading">
+
+              <span>
+                📄
+              </span>
+
+              <div>
+
+                <strong id="storyTitle">
+                  Character Case File
+                </strong>
+
+                <small>
+                  Read the clues carefully.
+                </small>
+
+              </div>
+
+            </div>
+
+
+            <p id="dynamicStory">
+
+              Your character story will appear here.
+
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- KEYWORD AREA -->
+
+        <div
+          id="keywordArea"
+          class="keyword-area">
+
+          <p>
+            Click the important words in the question.
+          </p>
+
+          <div id="keywordButtons"></div>
+
+        </div>
+
+
+
+        <!-- HUNT AREA -->
+
+        <div
+          id="huntArea"
+          class="hunt-area hidden">
+
           <h3>
-            🕵️ Find the picture that matches the clue!
+            🟢 HUNT FOR THE CLUE
           </h3>
 
           <p>
-            Your clue is:
-            <strong>
-              liked drawing
-            </strong>
+            Which part of the story answers the question?
           </p>
+
+          <div
+            id="clueButtons"
+            class="clue-buttons">
+
+          </div>
 
         </div>
 
 
 
-        <!-- HIDDEN OBJECT SCENE -->
+        <!-- MATCH -->
 
-        <div class="hidden-scene">
+        <div
+          id="matchArea"
+          class="match-area hidden">
 
+          <div class="match-heading">
 
-          <div class="scene-window">
+            <span>
+              🟡 FINAL MATCH
+            </span>
 
-            ☁️
+            <h3>
+              Find the object!
+            </h3>
 
-            <br>
-
-            🌳
-
-          </div>
-
-
-          <div class="scene-shelf">
-
-            📚
-            🪴
-            ⭐
+            <p id="matchInstruction">
+              Search the room for the picture that matches your clue.
+            </p>
 
           </div>
 
 
-          <div class="scene-table">
+          <div class="hidden-object-room">
 
-            🖍️
-            &nbsp;
 
-            📓
-            &nbsp;
+            <div class="object-window">
+              ☁️ 🌳
+            </div>
+
+
+            <div class="object-shelf">
+
+              📚
+              🪴
+              ⭐
+
+            </div>
+
+
+            <div class="object-bed">
+
+              <span>
+                🧸
+              </span>
+
+              <span>
+                🛏️
+              </span>
+
+            </div>
+
+
+            <div class="object-table">
+
+              🖍️
+
+              <button
+                id="targetObject"
+                onclick="findObject()">
+
+                🎨
+
+              </button>
+
+              📓
+
+            </div>
 
 
             <button
-              class="hidden-object drawing"
-              onclick="matchObject('drawing')">
+              class="scene-object football-object">
 
-              🎨
+              ⚽
 
             </button>
 
-          </div>
+
+            <button
+              class="scene-object book-object">
+
+              📖
+
+            </button>
 
 
-          <div class="scene-ball">
-            ⚽
-          </div>
+            <div class="object-rug">
+              ◇ ◇ ◇
+            </div>
 
-
-          <div class="scene-book">
-            📖
-          </div>
-
-
-          <div class="scene-rug">
-
-            ◼︎ ◼︎ ◼︎
 
           </div>
-
 
         </div>
 
-      </div>
 
 
+        <!-- FEEDBACK -->
 
-      <!-- =================================================
-           COMPLETION
-      ================================================= -->
+        <div
+          id="detectiveFeedback"
+          class="detective-feedback">
 
-      <div
-        class="mission-complete hidden"
-        id="missionComplete">
+          <span>
+            🔎
+          </span>
 
-        <div class="big-star">
-          ⭐
+          <div>
+
+            <strong>
+              Detective mission
+            </strong>
+
+            <p>
+              Start by circling the question word.
+            </p>
+
+          </div>
+
         </div>
 
-        <h3>
-          Case Solved!
-        </h3>
 
-        <p>
-          Adam liked drawing.
-        </p>
 
-        <button
-          class="primary-btn"
-          onclick="showSection('home')">
+        <!-- COMPLETE -->
 
-          🏆 Return to Quest Map
+        <div
+          id="caseComplete"
+          class="case-complete hidden">
 
-        </button>
+          <div class="complete-star">
+            ⭐
+          </div>
+
+          <h2>
+            Case Solved!
+          </h2>
+
+          <p id="finalAnswer">
+            Your character liked drawing.
+          </p>
+
+          <button
+            onclick="showPage('home')"
+            class="main-button">
+
+            🏆 Quest Map
+
+          </button>
+
+        </div>
+
 
       </div>
 
     </div>
 
   </div>
+
 
 </section>
 
 
 
 <!-- =====================================================
-     FUTURE MISSIONS
+     PLACEHOLDER MISSIONS
 ===================================================== -->
 
 <section
@@ -922,21 +1292,17 @@
     🎧
   </div>
 
-  <p class="eyebrow">
+  <span class="mission-label">
     MISSION 3
-  </p>
+  </span>
 
   <h2>
     Catch the Clues
   </h2>
 
   <p>
-    Listen carefully and catch the correct information.
+    Coming next.
   </p>
-
-  <span>
-    🔒 Coming next
-  </span>
 
 </section>
 
@@ -950,22 +1316,17 @@
     🧠
   </div>
 
-  <p class="eyebrow">
+  <span class="mission-label">
     MISSION 4
-  </p>
+  </span>
 
   <h2>
     Grammar Time Machine
   </h2>
 
   <p>
-    Past Simple:
-    Affirmative & Negative
+    Coming next.
   </p>
-
-  <span>
-    🔒 Coming next
-  </span>
 
 </section>
 
@@ -976,25 +1337,20 @@
   class="page placeholder-page">
 
   <div class="placeholder-icon">
-    ☁️
+    ✍️
   </div>
 
-  <p class="eyebrow">
+  <span class="mission-label">
     MISSION 5
-  </p>
+  </span>
 
   <h2>
     Catch the Words
   </h2>
 
   <p>
-    Catch the correct words
-    and build your sentences.
+    Coming next.
   </p>
-
-  <span>
-    🔒 Coming next
-  </span>
 
 </section>
 
@@ -1005,24 +1361,20 @@
   class="page placeholder-page">
 
   <div class="placeholder-icon">
-    🎲
+    🗣️
   </div>
 
-  <p class="eyebrow">
+  <span class="mission-label">
     MISSION 6
-  </p>
+  </span>
 
   <h2>
     Random Prompt
   </h2>
 
   <p>
-    Ask. Answer. Swap roles.
+    Coming next.
   </p>
-
-  <span>
-    🔒 Coming next
-  </span>
 
 </section>
 
@@ -1033,4 +1385,5 @@
 <script src="script.js"></script>
 
 </body>
+
 </html>
